@@ -1,0 +1,4 @@
+binaerpiloten_freizeitbooking_plattform:
+    resource: "@BinaerpilotenFreizeitbookingPlattformBundle/Resources/config/routing.yml"
+    prefix:   /
+

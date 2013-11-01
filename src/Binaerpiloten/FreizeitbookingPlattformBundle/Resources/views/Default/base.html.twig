@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="description" content="Lorem ipsum dolor sit amet, con textus">
+    <meta name="author" content="">
+
+    <!-- Note there is no responsive meta tag here -->
+
+    <link rel="shortcut icon" href="../../assets/ico/favicon.png">
+
+    <title>Freizeitaktivitäten online buchen | freizeitbooking.de</title>
+
+    {% block stylesheets %}
+        <!-- Bootstrap core CSS -->
+        <link rel="stylesheet" href="{{ asset('bundles/freizeitbookingplattform/css/bootstrap.css') }}" />
+        <link rel="stylesheet" href="{{ asset('bundles/freizeitbookingplattform/css/custom.css') }}" />
+    {% endblock %}
+
+  </head>
+
+    <body>
+        <div id="wrap">
+        {% block navigation %}
+            <!-- Fixed navbar -->
+            <div class="navbar navbar-default navbar-fixed-top">
+                <div class="container">
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                        <a class="navbar-brand" href="#">Freizeitbooking</a>
+                    </div>
+                    <div class="navbar-collapse collapse">
+                        <ul class="nav navbar-nav">
+                            <li class="active"><a href="#">Home</a></li>
+                            <!-- Freizeit-Navigation -->
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Gokart <b class="caret"></b></a>
+                                    <ul class="dropdown-menu">
+                                        <li><a href="listenuebersicht.html">Würzburg</a></li>
+                                        <li><a href="#">Hamburg</a></li>
+                                        <li><a href="#">München</a></li>
+                                    </ul>
+                            </li>
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Laser-Tag <b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    <li><a href="#">Action</a></li>
+                                    <li><a href="#">Another action</a></li>
+                                    <li><a href="#">Something else here</a></li>
+                                </ul>
+                            </li>
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Paintball <b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    <li><a href="#">Action</a></li>
+                                    <li><a href="#">Another action</a></li>
+                                    <li><a href="#">Something else here</a></li>
+                                </ul>
+                            </li>
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Squash <b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    <li><a href="#">Action</a></li>
+                                    <li><a href="#">Another action</a></li>
+                                    <li><a href="#">Something else here</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div><!-- Freizeit-Navigation Ende -->
+                </div>
+          </div>
+        {% endblock %}
+
+        {% block content %}
+
+        {% endblock %}
+        </div>
+
+        {% block footer %}
+        <div id="footer">
+            <div class="container">
+                <p class="text-muted credit"><a href="impressum.html">Impressum</a> - <a href="#">Aktuelles zu Gokart</a></p>
+            </div>
+        </div>
+        {% endblock %}
+
+        {% block endofbodyjavascript %}
+        <!-- Bootstrap core JavaScript
+        ================================================== -->
+        <!-- Placed at the end of the document s<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+        <script src="http://code.jquery.com/jquery.js"></script>
+        <script src="{{ asset('bundles/freizeitbookingplattform/js/bootstrap.min.js') }}"></script>
+        {% endblock %}
+  </body>
+</html>

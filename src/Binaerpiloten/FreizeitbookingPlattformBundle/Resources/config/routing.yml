@@ -1,0 +1,16 @@
+binaerpiloten_freizeitbooking_plattform_homepage:
+    pattern:  /
+    defaults: { _controller: BinaerpilotenFreizeitbookingPlattformBundle:Default:index }
+
+gokartlist:
+    pattern: /gokart
+    defaults: { _controller: BinaerpilotenFreizeitbookingPlattformBundle:Default:gokartList }
+
+lasertagprovider:
+    resource: "@BinaerpilotenFreizeitbookingPlattformBundle/Controller/LasertagProviderController.php"
+    type: annotation
+
+gokartprovider:
+    resource: "@BinaerpilotenFreizeitbookingPlattformBundle/Controller/GokartProviderController.php"
+    type: annotation
+
