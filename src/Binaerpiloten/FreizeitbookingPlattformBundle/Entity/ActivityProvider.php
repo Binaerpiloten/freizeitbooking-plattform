@@ -9,7 +9,9 @@ use Doctrine\ORM\Mapping as ORM;
  *
  * @author bene
  *
- * @ORM\MappedSuperclass
+ * @ORM\Entity
+ * @ORM\InheritanceType("JOINED")
+ * @ORM\DiscriminatorColumn(name="discr", type="string")
  *
  */
 class ActivityProvider extends Entity {
@@ -18,49 +20,58 @@ class ActivityProvider extends Entity {
      *
      * @ORM\Column(name="name", type="string", length=255)
      */
-    private $name;
+    protected $name;
 
     /**
      * @var string
      *
      * @ORM\Column(name="street", type="string", length=255)
      */
-    private $street;
+    protected $street;
 
     /**
      * @var string
      *
      * @ORM\Column(name="zip", type="string", length=255)
      */
-    private $zip;
+    protected $zip;
 
     /**
      * @var string
      *
      * @ORM\Column(name="city", type="string", length=255)
      */
-    private $city;
+    protected $city;
 
     /**
      * @var float
      *
      * @ORM\Column(name="price", type="float")
      */
-    private $price;
+    protected $price;
 
     /**
      * @var string
      *
      * @ORM\Column(name="telephone", type="string", length=255)
      */
-    private $telephone;
+    protected $telephone;
 
     /**
      * @var string
      *
      * @ORM\Column(name="image", type="blob")
      */
-    private $image;
+    protected $image;
+
+    /**
+     * @ORM\ManyToMany(targetEntity="Region", inversedBy="providers")
+     */
+    protected $regions;
+
+    public function __construct() {
+        $this->regions = new \Doctrine\Common\Collections\ArrayCollection();
+    }
 
     /**
      * Set name
@@ -200,5 +211,36 @@ class ActivityProvider extends Entity {
      */
     public function getImage() {
         return $this->image;
+    }
+
+    /**
+     * Adds a region
+     * 
+     * @param Region $region
+     */
+    public function addRegion($region) {
+        $region->getProviders()->add($region);
+        $this->regions->add($region);
+    }
+
+    /**
+     * Returns the collection of regions
+     */
+    public function getRegions() {
+        return $this->regions;
+    }
+
+    /**
+     * Removes a region from this provider's list
+     *
+     * @param Region $region
+     */
+    public function removeRegion($region) {
+        $region->getProviders()->remove($region);
+        $this->regions->remove($region);
+    }
+
+    public function __toString() {
+        return $this->name;
     }
 }

@@ -3,7 +3,7 @@ binaerpiloten_freizeitbooking_plattform_homepage:
     defaults: { _controller: BinaerpilotenFreizeitbookingPlattformBundle:Default:index }
 
 gokartlist:
-    pattern: /gokart
+    pattern: /gokart/{regionURLName}
     defaults: { _controller: BinaerpilotenFreizeitbookingPlattformBundle:Default:gokartList }
 
 lasertagprovider:
@@ -14,3 +14,14 @@ gokartprovider:
     resource: "@BinaerpilotenFreizeitbookingPlattformBundle/Controller/GokartProviderController.php"
     type: annotation
 
+region:
+    resource: "@BinaerpilotenFreizeitbookingPlattformBundle/Controller/RegionController.php"
+    type: annotation
+
+category:
+    resource: "@BinaerpilotenFreizeitbookingPlattformBundle/Controller/CategoryController.php"
+    type: annotation
+
+seotext:
+    resource: "@BinaerpilotenFreizeitbookingPlattformBundle/Controller/SEOTextController.php"
+    type: annotation

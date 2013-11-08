@@ -6,9 +6,9 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
-class GokartProviderType extends AbstractType
+class CategoryType extends AbstractType
 {
-    /**
+        /**
      * @param FormBuilderInterface $builder
      * @param array $options
      */
@@ -16,24 +16,16 @@ class GokartProviderType extends AbstractType
     {
         $builder
             ->add('name')
-            ->add('street')
-            ->add('zip')
-            ->add('city')
-            ->add('price')
-            ->add('telephone')
-            ->add('image')
-            ->add('length')
-            ->add('regions')
         ;
     }
-
+    
     /**
      * @param OptionsResolverInterface $resolver
      */
     public function setDefaultOptions(OptionsResolverInterface $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => 'Binaerpiloten\FreizeitbookingPlattformBundle\Entity\GokartProvider'
+            'data_class' => 'Binaerpiloten\FreizeitbookingPlattformBundle\Entity\Category'
         ));
     }
 
@@ -42,6 +34,6 @@ class GokartProviderType extends AbstractType
      */
     public function getName()
     {
-        return 'binaerpiloten_freizeitbookingplattformbundle_gokartprovider';
+        return 'binaerpiloten_freizeitbookingplattformbundle_category';
     }
 }

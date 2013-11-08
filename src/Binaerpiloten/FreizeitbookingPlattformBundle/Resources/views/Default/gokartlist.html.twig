@@ -4,8 +4,8 @@
 <div class="container">
 
       <div class="list-header">
-        <h1>Gokart Würzburg</h1>
-        <p class="lead">Disable the responsiveness of Bootstrap by fixing the width of the container and using the first grid system tier.</p>
+        <h1>Gokart {{ region.name }}</h1>
+        <p class="lead">{{ region.description }}</p>
       </div>
 
       <div class="row">
@@ -13,17 +13,16 @@
         <div class="col-md-3">
             <div class="bs-sidenav">
                 <ul class="nav bs-sidenav">
-                  <li><a href="#">Würzburg</a></li>
-                  <li><a href="#">München</a></li>
-                  <li><a href="#">Hamburg</a></li>
-                  <li><a href="#">Berlin</a></li>
+                    {% for menuregion in regions %}
+                      <li><a href="{{ path('gokartlist',{'regionURLName': menuregion.getURLName}) }}">{{ menuregion.getName }}</a></li>
+                    {% endfor %}
                 </ul> 
             </div>
         </div>
         <!-- End Sidebar -->
 
         <div class="col-md-9">
-            {% for provider in providers %}
+            {% for provider in region.getProviders %}
                 <!-- Zeile -->
                 <div class="liste-zeile row">
                     <div class="col-xs-12">
@@ -34,7 +33,7 @@
                     </div>
                     <div class="col-md-4">
                         <p>Preis: {{ provider.price }} €</p>
-                        <p>Streckenlänge: {{ provider.length }} km</p>
+                        <p>Streckenlänge: {{ provider.length | number_format(0,'','.')}}&thinsp;m</p>
                     </div>
                     <div class="col-md-4">
                         <p>{{ provider.street }}<br>{{ provider.zip }} {{ provider.city }}</p>
@@ -45,8 +44,8 @@
 
           <!-- Info text -->
           <div class="info-text hidden-xs">
-          <h3>Gokart Bahnen in Würzburg buchen</h3>
-          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint [occaecat] cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur [adipisicing] elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in [voluptate] velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+          <h3>{% if seotext is not null %}{{ seotext.getHeading }}{% endif %}</h3>
+          <p>{% if seotext is not null %}{{ seotext.getText }}{% endif %}</p>
           </div>
         </div>
       </div>
