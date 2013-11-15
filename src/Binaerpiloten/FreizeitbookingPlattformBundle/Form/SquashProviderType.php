@@ -16,6 +16,7 @@ class SquashProviderType extends AbstractType
     {
         $builder
             ->add('name')
+            ->add('claim')
             ->add('street')
             ->add('zip')
             ->add('city')

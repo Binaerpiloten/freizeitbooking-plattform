@@ -22,6 +22,11 @@ class ActivityProvider extends Entity {
     protected $name;
 
     /**
+     * @ORM\Column(name="claim", type="string", length=255)
+     */
+    protected $claim;
+
+    /**
      * @var string
      *
      * @ORM\Column(name="street", type="string", length=255)
@@ -256,6 +261,14 @@ class ActivityProvider extends Entity {
 
     public function setWebsite($website) {
         $this->website = $website;
+    }
+
+    public function getClaim() {
+        return $this->claim;
+    }
+
+    public function setClaim($claim) {
+        $this->claim = $claim;
     }
 
 }
