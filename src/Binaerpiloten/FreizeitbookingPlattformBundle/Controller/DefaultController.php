@@ -21,13 +21,13 @@ class DefaultController extends Controller
     public function gokartDetailsAction($regionURLName, $id) {
         return $this->renderGenericProviderDetails($id,'gokartdetails.html.twig','GokartProvider');
     }
-    
+
     public function paintballListAction($regionURLName) {
-    	return $this->renderGenericProviderList($regionURLName,'paintballlist.html.twig','Paintball');
+        return $this->renderGenericProviderList($regionURLName,'paintballlist.html.twig','Paintball','PaintballProvider');
     }
-    
+
     public function paintballDetailsAction($regionURLName, $id) {
-    	return $this->renderGenericProviderDetails($id,'paintballdetails.html.twig','PaintballProvider');
+        return $this->renderGenericProviderDetails($id,'paintballdetails.html.twig','PaintballProvider');
     }
 
     public function lasertagListAction($regionURLName) {
