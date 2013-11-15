@@ -59,7 +59,7 @@
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">Paintball <b class="caret"></b></a>
                                 <ul class="dropdown-menu">
                                     {% for menuregion in regions %}
-                                        <li><a href="{{ path('gokartlist',{'regionURLName': menuregion.getURLName}) }}">{{ menuregion.getName }}</a></li>
+                                        <li><a href="{{ path('paintballlist',{'regionURLName': menuregion.getURLName}) }}">{{ menuregion.getName }}</a></li>
                                     {% endfor %}
                                 </ul>
                             </li>

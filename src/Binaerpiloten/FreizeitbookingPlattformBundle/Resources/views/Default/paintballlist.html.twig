@@ -1,0 +1,24 @@
+{% extends 'BinaerpilotenFreizeitbookingPlattformBundle:Default:abstractlist.html.twig' %}
+
+{% block heading %}Paintball{% endblock %}
+
+{% block menupath %}
+    <a href="{{ path('paintballlist',{'regionURLName': menuregion.getURLName}) }}">{{ menuregion.getName }}</a>
+{% endblock %}
+
+{% block providerinfo %}
+<div class="col-xs-12">
+    <h2>{{ provider.name }}</h2>
+</div>
+<div class="col-md-4">
+    <p><a href="{{ path('paintballdetails',{'regionURLName': region.getURLName, 'id': provider.getId}) }}" class="btn btn-primary btn-large">Jetzt Reservierung anfragen</a></p>
+</div>
+<div class="col-md-4">
+    <p>Preis: {{ provider.price }} €</p>
+    <p>Indoor-Felder: {{ provider.indoorFieldCount | number_format(0,'','.')}}&thinsp;m</p>
+    <p>Outdoor-Felder: {{ provider.outdoorFieldCount | number_format(0,'','.')}}&thinsp;m</p>
+</div>
+<div class="col-md-4">
+    <p>{{ provider.street }}<br>{{ provider.zip }} {{ provider.city }}</p>
+</div>
+{% endblock %}

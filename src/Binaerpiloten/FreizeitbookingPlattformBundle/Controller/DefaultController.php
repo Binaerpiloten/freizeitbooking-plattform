@@ -21,6 +21,14 @@ class DefaultController extends Controller
     public function gokartDetailsAction($regionURLName, $id) {
         return $this->renderGenericProviderDetails($id,'gokartdetails.html.twig','GokartProvider');
     }
+    
+    public function paintballListAction($regionURLName) {
+    	return $this->renderGenericProviderList($regionURLName,'paintballlist.html.twig','Paintball');
+    }
+    
+    public function paintballDetailsAction($regionURLName, $id) {
+    	return $this->renderGenericProviderDetails($id,'paintballdetails.html.twig','PaintballProvider');
+    }
 
     // helper functions go here
 
@@ -41,6 +49,10 @@ class DefaultController extends Controller
         $category = $em->getRepository('Binaerpiloten\FreizeitbookingPlattformBundle\Entity\Category')
                        ->findOneBy(array('name' => $categoryName));
 
+        if ($category === null)
+        	return new Response('Kategorie unbekannt'); //TODO!
+        
+        
         $q = $em->createQuery("select t from Binaerpiloten\FreizeitbookingPlattformBundle\Entity\SEOText t where t.region = " . $region->getId() . " and t.category = " . $category->getId());
         $result = $q->getResult();
 
