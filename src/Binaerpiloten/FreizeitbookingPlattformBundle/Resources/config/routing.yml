@@ -19,6 +19,10 @@ gokartprovider:
     resource: "@BinaerpilotenFreizeitbookingPlattformBundle/Controller/GokartProviderController.php"
     type: annotation
 
+paintballprovider:
+    resource: "@BinaerpilotenFreizeitbookingPlattformBundle/Controller/PaintballProviderController.php"
+    type: annotation
+
 region:
     resource: "@BinaerpilotenFreizeitbookingPlattformBundle/Controller/RegionController.php"
     type: annotation
