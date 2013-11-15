@@ -1,51 +1,23 @@
-{% extends 'BinaerpilotenFreizeitbookingPlattformBundle:Default:base.html.twig' %}
+{% extends 'BinaerpilotenFreizeitbookingPlattformBundle:Default:abstractlist.html.twig' %}
 
-{% block content %}
-<div class="container">
+{% block heading %}Gokart{% endblock %}
 
-      <div class="list-header">
-        <h1>Gokart {{ region.name }}</h1>
-        <p class="lead">{{ region.description }}</p>
-      </div>
+{% block menupath %}
+    <a href="{{ path('gokartlist',{'regionURLName': menuregion.getURLName}) }}">{{ menuregion.getName }}</a>
+{% endblock %}
 
-      <div class="row">
-        <!-- Sidebar -->
-        <div class="col-md-3">
-            <div class="bs-sidenav">
-                <ul class="nav bs-sidenav">
-                    {% for menuregion in regions %}
-                      <li><a href="{{ path('gokartlist',{'regionURLName': menuregion.getURLName}) }}">{{ menuregion.getName }}</a></li>
-                    {% endfor %}
-                </ul> 
-            </div>
-        </div>
-
-        <div class="col-md-9">
-            {% for provider in region.getProviders %}
-                <div class="liste-zeile row">
-                    <div class="col-xs-12">
-                        <h2>{{ provider.name }}</h2>
-                    </div>
-                    <div class="col-md-4">
-                        <p><a href="{{ path('gokartdetails',{'regionURLName': region.getURLName, 'id': provider.getId}) }}" class="btn btn-primary btn-large">Jetzt Reservierung anfragen</a>
-                    </div>
-                    <div class="col-md-4">
-                        <p>Preis: {{ provider.price }} €</p>
-                        <p>Streckenlänge: {{ provider.length | number_format(0,'','.')}}&thinsp;m</p>
-                    </div>
-                    <div class="col-md-4">
-                        <p>{{ provider.street }}<br>{{ provider.zip }} {{ provider.city }}</p>
-                    </div>
-                </div>
-            {% endfor %}
-
-          <!-- Info text -->
-          <div class="info-text hidden-xs">
-          <h3>{% if seotext is not null %}{{ seotext.getHeading }}{% endif %}</h3>
-          <p>{% if seotext is not null %}{{ seotext.getText }}{% endif %}</p>
-          </div>
-        </div>
-      </div>
-
+{% block providerinfo %}
+<div class="col-xs-12">
+    <h2>{{ provider.name }}</h2>
+</div>
+<div class="col-md-4">
+    <p><a href="{{ path('gokartdetails',{'regionURLName': region.getURLName, 'id': provider.getId}) }}" class="btn btn-primary btn-large">Jetzt Reservierung anfragen</a></p>
+</div>
+<div class="col-md-4">
+    <p>Preis: {{ provider.price }} €</p>
+    <p>Streckenlänge: {{ provider.length | number_format(0,'','.')}}&thinsp;m</p>
+</div>
+<div class="col-md-4">
+    <p>{{ provider.street }}<br>{{ provider.zip }} {{ provider.city }}</p>
 </div>
 {% endblock %}
