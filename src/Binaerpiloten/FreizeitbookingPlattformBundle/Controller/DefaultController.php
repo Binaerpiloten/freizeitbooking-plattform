@@ -10,7 +10,9 @@ class DefaultController extends Controller
 {
     public function indexAction()
     {
-        return $this->render('BinaerpilotenFreizeitbookingPlattformBundle:Default:index.html.twig');
+        $regions = $this->getRegions();
+        return $this->render('BinaerpilotenFreizeitbookingPlattformBundle:Default:index.html.twig',
+                array('regions' => $regions));
     }
 
     public function gokartListAction($regionURLName) {
@@ -35,6 +37,19 @@ class DefaultController extends Controller
         return $this->render('BinaerpilotenFreizeitbookingPlattformBundle:Default:gokartlist.html.twig', 
                 array('region' => $region, 'seotext' => $seotext, 'regions' => $regions));
     }
+
+    public function gokartDetailsAction($regionURLName, $id) {
+        $em = $this->getDoctrine()->getManager();
+        $provider = $em->getRepository('Binaerpiloten\FreizeitbookingPlattformBundle\Entity\GokartProvider')
+                       ->findOneBy(array('id' => $id));
+
+        $regions = $this->getRegions();
+
+        return $this->render('BinaerpilotenFreizeitbookingPlattformBundle:Default:gokartdetails.html.twig', 
+                array('provider' =>$provider, 'regions' => $regions));
+    }
+
+    // helper functions go here
 
     protected function getRegions() {
         $em = $this->getDoctrine()->getManager();

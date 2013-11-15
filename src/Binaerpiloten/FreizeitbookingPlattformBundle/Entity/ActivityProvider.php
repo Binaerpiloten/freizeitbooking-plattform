@@ -1,7 +1,6 @@
 <?php
 
 namespace Binaerpiloten\FreizeitbookingPlattformBundle\Entity;
-
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -56,6 +55,13 @@ class ActivityProvider extends Entity {
      * @ORM\Column(name="telephone", type="string", length=255)
      */
     protected $telephone;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="website", type="string", length=255)
+     */
+    protected $website;
 
     /**
      * @var string
@@ -243,4 +249,13 @@ class ActivityProvider extends Entity {
     public function __toString() {
         return $this->name;
     }
+
+    public function getWebsite() {
+        return $this->website;
+    }
+
+    public function setWebsite($website) {
+        $this->website = $website;
+    }
+
 }

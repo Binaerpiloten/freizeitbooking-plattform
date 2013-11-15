@@ -19,17 +19,15 @@
                 </ul> 
             </div>
         </div>
-        <!-- End Sidebar -->
 
         <div class="col-md-9">
             {% for provider in region.getProviders %}
-                <!-- Zeile -->
                 <div class="liste-zeile row">
                     <div class="col-xs-12">
                         <h2>{{ provider.name }}</h2>
                     </div>
                     <div class="col-md-4">
-                        <p><a href="detailseite.html" class="btn btn-primary btn-large">Jetzt Reservierung anfragen</a>
+                        <p><a href="{{ path('gokartdetails',{'regionURLName': region.getURLName, 'id': provider.getId}) }}" class="btn btn-primary btn-large">Jetzt Reservierung anfragen</a>
                     </div>
                     <div class="col-md-4">
                         <p>Preis: {{ provider.price }} €</p>
@@ -39,7 +37,6 @@
                         <p>{{ provider.street }}<br>{{ provider.zip }} {{ provider.city }}</p>
                     </div>
                 </div>
-                <!-- End Zeile -->
             {% endfor %}
 
           <!-- Info text -->

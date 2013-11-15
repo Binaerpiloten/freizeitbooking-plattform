@@ -15,7 +15,16 @@ class LasertagProviderType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('maxPlayer')
+        ->add('name')
+        ->add('street')
+        ->add('zip')
+        ->add('city')
+        ->add('price')
+        ->add('telephone')
+        ->add('website')
+        ->add('image')
+        ->add('maxPlayer')
+        ->add('regions')
         ;
     }
     

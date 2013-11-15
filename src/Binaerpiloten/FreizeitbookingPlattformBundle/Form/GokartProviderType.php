@@ -21,6 +21,7 @@ class GokartProviderType extends AbstractType
             ->add('city')
             ->add('price')
             ->add('telephone')
+            ->add('website')
             ->add('image')
             ->add('length')
             ->add('regions')
