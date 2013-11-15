@@ -15,7 +15,7 @@ class DefaultController extends Controller
     }
 
     public function gokartListAction($regionURLName) {
-        return $this->renderGenericProviderList($regionURLName,'gokartlist.html.twig','Gokart');
+        return $this->renderGenericProviderList($regionURLName,'gokartlist.html.twig','Gokart','GokartProvider');
     }
 
     public function gokartDetailsAction($regionURLName, $id) {
@@ -30,7 +30,16 @@ class DefaultController extends Controller
     	return $this->renderGenericProviderDetails($id,'paintballdetails.html.twig','PaintballProvider');
     }
 
-    // helper functions go here
+    public function lasertagListAction($regionURLName) {
+        return $this->renderGenericProviderList($regionURLName,'lasertaglist.html.twig','Lasertag','LasertagProvider');
+    }
+
+    public function lasertagDetailsAction($regionURLName, $id) {
+        return $this->renderGenericProviderDetails($id,'lasertagdetails.html.twig','LasertagProvider');
+    }
+
+
+    // helper functions go here -----------------------------------------------------------------------
 
     protected function getRegions() {
         $em = $this->getDoctrine()->getManager();
@@ -38,7 +47,7 @@ class DefaultController extends Controller
         return $regions;
     }
 
-    protected function renderGenericProviderList($regionURLName, $templateName, $categoryName) {
+    protected function renderGenericProviderList($regionURLName, $templateName, $categoryName, $providerEntityName) {
         $em = $this->getDoctrine()->getManager();
         $region = $em->getRepository('Binaerpiloten\FreizeitbookingPlattformBundle\Entity\Region')
                      ->findOneBy(array('urlname' => $regionURLName));
@@ -48,20 +57,24 @@ class DefaultController extends Controller
 
         $category = $em->getRepository('Binaerpiloten\FreizeitbookingPlattformBundle\Entity\Category')
                        ->findOneBy(array('name' => $categoryName));
-
         if ($category === null)
         	return new Response('Kategorie unbekannt'); //TODO!
         
-        
-        $q = $em->createQuery("select t from Binaerpiloten\FreizeitbookingPlattformBundle\Entity\SEOText t where t.region = " . $region->getId() . " and t.category = " . $category->getId());
-        $result = $q->getResult();
+        $q1 = $em->createQuery("select t from Binaerpiloten\FreizeitbookingPlattformBundle\Entity\SEOText t where t.region = " . $region->getId() . " and t.category = " . $category->getId());
+        $result = $q1->getResult();
 
         $seotext = empty($result) ? null : $result[0];
 
         $regions = $this->getRegions();
 
+        $q2 = $em->createQuery("SELECT p " .
+                               "FROM Binaerpiloten\FreizeitbookingPlattformBundle\Entity\\" . $providerEntityName . " p " .
+                               "JOIN p.regions r " .
+                               "WHERE r.id = " . $region->getId());
+        $providers = $q2->getResult();
+
         return $this->render('BinaerpilotenFreizeitbookingPlattformBundle:Default:' . $templateName,
-                array('region' => $region, 'seotext' => $seotext, 'regions' => $regions));
+                array('region' => $region, 'seotext' => $seotext, 'regions' => $regions, 'providers' => $providers));
     }
 
     protected function renderGenericProviderDetails($id, $templateName, $providerEntityName) {
