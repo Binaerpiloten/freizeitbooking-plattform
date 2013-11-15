@@ -43,7 +43,37 @@ class DefaultController extends Controller
 
     protected function getRegions() {
         $em = $this->getDoctrine()->getManager();
-        $regions = $em->getRepository('Binaerpiloten\FreizeitbookingPlattformBundle\Entity\Region')->findAll();
+        $regions = array(); 
+        $regions['all'] = $em->getRepository('Binaerpiloten\FreizeitbookingPlattformBundle\Entity\Region')->findAll();
+        
+        $qgokart = $em->createQuery("SELECT DISTINCT r.name " .
+                  		 "FROM Binaerpiloten\FreizeitbookingPlattformBundle\Entity\Region r " .
+        				 "JOIN r.providers p " .
+        				 "WHERE p INSTANCE OF Binaerpiloten\FreizeitbookingPlattformBundle\Entity\GokartProvider");
+
+        $regions['gokart'] = $qgokart->getResult();
+
+        $qlasertag = $em->createQuery("SELECT DISTINCT r.name " .
+        		"FROM Binaerpiloten\FreizeitbookingPlattformBundle\Entity\Region r " .
+        		"JOIN r.providers p " .
+        		"WHERE p INSTANCE OF Binaerpiloten\FreizeitbookingPlattformBundle\Entity\LasertagProvider");
+        
+        $regions['lasertag'] = $qlasertag->getResult();
+        
+        $qpaintball = $em->createQuery("SELECT DISTINCT r.name " .
+        		"FROM Binaerpiloten\FreizeitbookingPlattformBundle\Entity\Region r " .
+        		"JOIN r.providers p " .
+        		"WHERE p INSTANCE OF Binaerpiloten\FreizeitbookingPlattformBundle\Entity\PaintballProvider");
+        
+        $regions['paintball'] = $qpaintball->getResult();
+        
+        $qsquash = $em->createQuery("SELECT DISTINCT r.name " .
+        		"FROM Binaerpiloten\FreizeitbookingPlattformBundle\Entity\Region r " .
+        		"JOIN r.providers p " .
+        		"WHERE p INSTANCE OF Binaerpiloten\FreizeitbookingPlattformBundle\Entity\SquashProvider");
+        
+        $regions['squash'] = $qsquash->getResult();
+        
         return $regions;
     }
 
