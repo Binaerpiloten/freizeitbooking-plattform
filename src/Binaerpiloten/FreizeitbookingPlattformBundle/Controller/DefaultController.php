@@ -38,6 +38,13 @@ class DefaultController extends Controller
         return $this->renderGenericProviderDetails($id,'lasertagdetails.html.twig','LasertagProvider');
     }
 
+    public function squashListAction($regionURLName) {
+        return $this->renderGenericProviderList($regionURLName,'squashlist.html.twig','Squash','SquashProvider');
+    }
+
+    public function squashDetailsAction($regionURLName, $id) {
+        return $this->renderGenericProviderDetails($id,'squashdetails.html.twig','SquashProvider');
+    }
 
     // helper functions go here -----------------------------------------------------------------------
 
