@@ -26,6 +26,14 @@ lasertagdetails:
     pattern: /lasertag/{regionURLName}/details/{id}
     defaults: { _controller: BinaerpilotenFreizeitbookingPlattformBundle:Default:lasertagDetails }
 
+squashlist:
+    pattern: /squash/{regionURLName}
+    defaults: { _controller: BinaerpilotenFreizeitbookingPlattformBundle:Default:squashList }
+
+squashdetails:
+    pattern: /squash/{regionURLName}/details/{id}
+    defaults: { _controller: BinaerpilotenFreizeitbookingPlattformBundle:Default:squashDetails }
+
 lasertagprovider:
     resource: "@BinaerpilotenFreizeitbookingPlattformBundle/Controller/LasertagProviderController.php"
     type: annotation
@@ -36,6 +44,10 @@ gokartprovider:
 
 paintballprovider:
     resource: "@BinaerpilotenFreizeitbookingPlattformBundle/Controller/PaintballProviderController.php"
+    type: annotation
+
+squashprovider:
+    resource: "@BinaerpilotenFreizeitbookingPlattformBundle/Controller/SquashProviderController.php"
     type: annotation
 
 region:
