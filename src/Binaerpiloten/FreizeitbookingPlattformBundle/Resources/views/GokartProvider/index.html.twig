@@ -1,13 +1,6 @@
-{% extends 'BinaerpilotenFreizeitbookingPlattformBundle:Default:base.html.twig' %}
+{% extends 'BinaerpilotenFreizeitbookingPlattformBundle::backend-base.html.twig' %}
 
-{% block navigation %}
-{% endblock %}
-
-{% block footer %}
-{% endblock %}
-
-{% block content -%}
-<div class="container">
+{% block body -%}
     <h1>GokartProvider list</h1>
 
     <table class="records_list table table-striped table-hover">
@@ -55,5 +48,4 @@
     <a href="{{ path('gokartprovider_new') }}" class='btn btn-primary' type='button'>
         Create a new entry
     </a>
-    </div>
     {% endblock %}

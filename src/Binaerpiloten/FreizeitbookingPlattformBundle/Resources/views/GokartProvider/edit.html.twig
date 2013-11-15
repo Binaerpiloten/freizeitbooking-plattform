@@ -1,4 +1,4 @@
-{% extends '::base.html.twig' %}
+{% extends 'BinaerpilotenFreizeitbookingPlattformBundle::backend-base.html.twig' %}
 
 {% block body -%}
     <h1>GokartProvider edit</h1>
@@ -14,3 +14,8 @@
     <li>{{ form(delete_form) }}</li>
 </ul>
 {% endblock %}
+
+{% block form_widget_simple %}
+    {% set type = type|default('text') %}
+    <input class="form-control" type="{{ type }}" {{ block('widget_attributes') }} {% if value is not empty %}value="{{ value }}" {% endif %}/>
+{% endblock form_widget_simple %}
