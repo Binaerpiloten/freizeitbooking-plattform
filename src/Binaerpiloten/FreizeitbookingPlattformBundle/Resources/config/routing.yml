@@ -10,6 +10,14 @@ gokartdetails:
     pattern: /gokart/{regionURLName}/details/{id}
     defaults: { _controller: BinaerpilotenFreizeitbookingPlattformBundle:Default:gokartDetails }
 
+lasertaglist:
+    pattern: /lasertag/{regionURLName}
+    defaults: { _controller: BinaerpilotenFreizeitbookingPlattformBundle:Default:lasertagList }
+
+lasertagdetails:
+    pattern: /lasertag/{regionURLName}/details/{id}
+    defaults: { _controller: BinaerpilotenFreizeitbookingPlattformBundle:Default:lasertagDetails }
+
 
 lasertagprovider:
     resource: "@BinaerpilotenFreizeitbookingPlattformBundle/Controller/LasertagProviderController.php"
