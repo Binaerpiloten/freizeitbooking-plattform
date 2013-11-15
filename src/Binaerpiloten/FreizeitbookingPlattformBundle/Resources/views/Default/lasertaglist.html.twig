@@ -2,8 +2,10 @@
 
 {% block heading %}Lasertag{% endblock %}
 
-{% block menupath %}
-    <a href="{{ path('lasertaglist',{'regionURLName': menuregion.getURLName}) }}">{{ menuregion.getName }}</a>
+{% block menuregions %}
+    {% for menuregion in regions['lasertag'] %}
+        <li><a href="{{ path('lasertaglist',{'regionURLName': menuregion.getURLName}) }}">{{ menuregion.getName }}</a></li>
+    {% endfor %}
 {% endblock %}
 
 {% block providerinfo %}

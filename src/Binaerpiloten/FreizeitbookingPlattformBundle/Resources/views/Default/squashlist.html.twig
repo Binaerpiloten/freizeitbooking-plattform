@@ -2,8 +2,10 @@
 
 {% block heading %}Paintball{% endblock %}
 
-{% block menupath %}
-    <a href="{{ path('squashlist',{'regionURLName': menuregion.getURLName}) }}">{{ menuregion.getName }}</a>
+{% block menuregions %}
+    {% for menuregion in regions['squash'] %}
+        <li><a href="{{ path('squashlist',{'regionURLName': menuregion.getURLName}) }}">{{ menuregion.getName }}</a></li>
+    {% endfor %}
 {% endblock %}
 
 {% block providerinfo %}

@@ -2,8 +2,10 @@
 
 {% block heading %}Gokart{% endblock %}
 
-{% block menupath %}
-    <a href="{{ path('gokartlist',{'regionURLName': menuregion.getURLName}) }}">{{ menuregion.getName }}</a>
+{% block menuregions %}
+    {% for menuregion in regions['gokart'] %}
+        <li><a href="{{ path('gokartlist',{'regionURLName': menuregion.getURLName}) }}">{{ menuregion.getName }}</a></li>
+    {% endfor %}
 {% endblock %}
 
 {% block providerinfo %}

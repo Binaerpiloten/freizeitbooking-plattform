@@ -13,9 +13,7 @@
         <div class="col-md-3">
             <div class="bs-sidenav">
                 <ul class="nav bs-sidenav">
-                    {% for menuregion in regions %}
-                      <li>{% block menupath %}{% endblock %}</li>
-                    {% endfor %}
+                    {% block menuregions %}{% endblock %}
                 </ul> 
             </div>
         </div>

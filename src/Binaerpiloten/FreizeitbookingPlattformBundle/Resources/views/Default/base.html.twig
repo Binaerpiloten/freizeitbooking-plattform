@@ -42,7 +42,7 @@
                             <li class="dropdown{{ 'gokart' in app.request.get('_route') ? ' active' }}">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">Gokart <b class="caret"></b></a>
                                     <ul class="dropdown-menu">
-                                        {% for menuregion in regions %}
+                                        {% for menuregion in regions['gokart'] %}
                                             <li><a href="{{ path('gokartlist',{'regionURLName': menuregion.getURLName}) }}">{{ menuregion.getName }}</a></li>
                                         {% endfor %}
                                     </ul>
@@ -50,7 +50,7 @@
                             <li class="dropdown{{ 'lasertag' in app.request.get('_route') ? ' active' }}">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">Laser-Tag <b class="caret"></b></a>
                                 <ul class="dropdown-menu">
-                                    {% for menuregion in regions %}
+                                    {% for menuregion in regions['lasertag'] %}
                                         <li><a href="{{ path('lasertaglist',{'regionURLName': menuregion.getURLName}) }}">{{ menuregion.getName }}</a></li>
                                     {% endfor %}
                                 </ul>
@@ -58,7 +58,7 @@
                             <li class="dropdown{{ 'paintball' in app.request.get('_route') ? ' active' }}">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">Paintball <b class="caret"></b></a>
                                 <ul class="dropdown-menu">
-                                    {% for menuregion in regions %}
+                                    {% for menuregion in regions['paintball'] %}
                                         <li><a href="{{ path('paintballlist',{'regionURLName': menuregion.getURLName}) }}">{{ menuregion.getName }}</a></li>
                                     {% endfor %}
                                 </ul>
@@ -66,7 +66,7 @@
                             <li class="dropdown{{ 'squash' in app.request.get('_route') ? ' active' }}">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">Squash <b class="caret"></b></a>
                                 <ul class="dropdown-menu">
-                                    {% for menuregion in regions %}
+                                    {% for menuregion in regions['squash'] %}
                                         <li><a href="{{ path('squashlist',{'regionURLName': menuregion.getURLName}) }}">{{ menuregion.getName }}</a></li>
                                     {% endfor %}
                                 </ul>
