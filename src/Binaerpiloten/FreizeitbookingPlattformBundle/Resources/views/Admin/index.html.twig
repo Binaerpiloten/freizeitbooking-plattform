@@ -1,0 +1,23 @@
+<!doctype html5>
+<html>
+    <head>
+        <title>Freizeitbooking Admin</title>
+        <meta charset="UTF-8" />
+    </head>
+    <body>
+        <h1>Howdy, {{ app.user.username }}?</h1>
+        <p>
+            You are {{ app.user.roles|join(', ') }}.
+        </p>
+        <ul>
+            {% for target in ['lasertagprovider','gokartprovider','paintballprovider','squashprovider','region','category','seotext'] %}
+            <li><a href="{{ path(target) }}">Edit {{ target }}s</a></li>
+            {% endfor %}
+        </ul>
+        <p>
+            <a href="{{ path('fos_user_security_logout') }}">
+                {{ 'layout.logout'|trans({}, 'FOSUserBundle') }}
+            </a>
+        </p>
+    </body>
+</html>
