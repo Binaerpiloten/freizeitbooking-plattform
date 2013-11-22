@@ -15,10 +15,10 @@ class SEOTextType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('heading')
-            ->add('text')
-            ->add('region')
-            ->add('category')
+            ->add('heading', null, array('attr' => array('class' => 'form-control')))
+            ->add('text', null, array('attr' => array('class' => 'form-control')))
+            ->add('region', null, array('attr' => array('class' => 'form-control')))
+            ->add('category', null, array('attr' => array('class' => 'form-control')))
         ;
     }
 

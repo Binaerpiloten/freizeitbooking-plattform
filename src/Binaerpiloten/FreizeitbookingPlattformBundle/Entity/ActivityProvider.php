@@ -26,28 +26,28 @@ class ActivityProvider extends Entity {
     protected $name;
 
     /**
-     * @ORM\Column(name="claim", type="string", length=255)
+     * @ORM\Column(name="claim", type="string", length=255, nullable=true)
      */
     protected $claim;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="street", type="string", length=255)
+     * @ORM\Column(name="street", type="string", length=255, nullable=true)
      */
     protected $street;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="zip", type="string", length=255)
+     * @ORM\Column(name="zip", type="string", length=255, nullable=true)
      */
     protected $zip;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="city", type="string", length=255)
+     * @ORM\Column(name="city", type="string", length=255, nullable=true)
      */
     protected $city;
 
@@ -61,14 +61,14 @@ class ActivityProvider extends Entity {
     /**
      * @var string
      *
-     * @ORM\Column(name="telephone", type="string", length=255)
+     * @ORM\Column(name="telephone", type="string", length=255, nullable=true)
      */
     protected $telephone;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="website", type="string", length=255)
+     * @ORM\Column(name="website", type="string", length=255, nullable=true)
      */
     protected $website;
 
