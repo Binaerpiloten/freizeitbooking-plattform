@@ -28,7 +28,7 @@ class LasertagProviderType extends AbstractType
         ->add('regions')
         ;
     }
-    
+
     /**
      * @param OptionsResolverInterface $resolver
      */

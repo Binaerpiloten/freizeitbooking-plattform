@@ -1,7 +1,10 @@
 <?php
 
 namespace Binaerpiloten\FreizeitbookingPlattformBundle\Entity;
+
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
 
 /**
  * Provider of a spare time activity
@@ -9,6 +12,7 @@ use Doctrine\ORM\Mapping as ORM;
  * @author bene
  *
  * @ORM\Entity
+ * @ORM\HasLifecycleCallbacks
  * @ORM\InheritanceType("JOINED")
  * @ORM\DiscriminatorColumn(name="discr", type="string")
  *
@@ -71,7 +75,12 @@ class ActivityProvider extends Entity {
     /**
      * @var string
      *
-     * @ORM\Column(name="image", type="blob")
+     * @ORM\Column(name="imagepath", type="string", length=255, nullable=true)
+     */
+    protected $imagepath;
+
+    /**
+     * @Assert\File(maxSize="6000000")
      */
     protected $image;
 
@@ -79,6 +88,8 @@ class ActivityProvider extends Entity {
      * @ORM\ManyToMany(targetEntity="Region", inversedBy="providers")
      */
     protected $regions;
+
+    private $tempImage;
 
     public function __construct() {
         $this->regions = new \Doctrine\Common\Collections\ArrayCollection();
@@ -210,8 +221,8 @@ class ActivityProvider extends Entity {
      * @param string $image
      * @return ActivityProvider
      */
-    public function setImage($image) {
-        $this->image = $image;
+    public function setImagepath($image) {
+        $this->imagepath = $image;
         return $this;
     }
 
@@ -220,8 +231,8 @@ class ActivityProvider extends Entity {
      *
      * @return string
      */
-    public function getImage() {
-        return $this->image;
+    public function getImagepath() {
+        return $this->imagepath;
     }
 
     /**
@@ -271,4 +282,99 @@ class ActivityProvider extends Entity {
         $this->claim = $claim;
     }
 
+    public function getAbsoluteImagepath() {
+        return null === $this->imagepath ? null : $this->getUploadRootDir().'/'.$this->imagepath;
+    }
+
+    public function getWebImagepath() {
+        return null === $this->path ? null : $this->getUploadDir().'/'.$this->imagepath;
+    }
+
+    protected function getUploadRootDir() {
+        // the absolute directory path where uploaded
+        // documents should be saved
+        return __DIR__.'/../../../../web/'.$this->getUploadDir();
+    }
+
+    protected function getUploadDir() {
+        // get rid of the __DIR__ so it doesn't screw up
+        // when displaying uploaded doc/image in the view.
+        return 'images/activityproviders';
+    }
+
+   /**
+    * Sets image.
+    *
+    * @param UploadedFile $file
+    */
+    public function setImage(UploadedFile $image = null) {
+        $this->image = $image;
+        // check if we have an old image path
+        if (isset($this->imagepath)) {
+            // store the old name to delete after the update
+            $this->temp = $this->imagepath;
+            $this->imagepath = null;
+        } else {
+            $this->imagepath = 'initial';
+        }
+    }
+
+
+    /**
+     * Get image.
+     *
+     * @return UploadedFile
+     */
+    public function getImage() {
+        return $this->image;
+    }
+
+
+    /**
+     * @ORM\PostPersist()
+     * @ORM\PostUpdate()
+     */
+    public function imageUpload()
+    {
+        if (null === $this->getImage()) {
+            return;
+        }
+
+        // if there is an error when moving the file, an exception will
+        // be automatically thrown by move(). This will properly prevent
+        // the entity from being persisted to the database on error
+        $this->getImage()->move($this->getUploadRootDir(), $this->imagepath);
+
+        // check if we have an old image
+        if (isset($this->temp)) {
+            // delete the old image
+            unlink($this->getUploadRootDir().'/'.$this->temp);
+            // clear the temp image path
+            $this->temp = null;
+        }
+        $this->image = null;
+    }
+
+    /**
+     * @ORM\PrePersist()
+     * @ORM\PreUpdate()
+     */
+    public function preImageUpload()
+    {
+        if (null !== $this->getImage()) {
+            // do whatever you want to generate a unique name
+            $filename = sha1(uniqid(mt_rand(), true));
+            $this->imagepath = $filename.'.'.$this->getImage()->guessExtension();
+        }
+    }
+
+    /**
+     * @ORM\PostRemove()
+     */
+    public function removeImageUpload()
+    {
+        if ($file = $this->getAbsoluteImagePath()) {
+            unlink($file);
+        }
+    }
 }
