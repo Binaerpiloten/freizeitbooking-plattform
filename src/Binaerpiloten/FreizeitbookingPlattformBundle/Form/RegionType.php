@@ -15,9 +15,9 @@ class RegionType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('name')
-            ->add('urlname')
-            ->add('description')
+            ->add('name', null, array('attr' => array('class' => 'form-control')))
+            ->add('urlname', null, array('attr' => array('class' => 'form-control')))
+            ->add('description', null, array('attr' => array('class' => 'form-control')))
         ;
     }
 

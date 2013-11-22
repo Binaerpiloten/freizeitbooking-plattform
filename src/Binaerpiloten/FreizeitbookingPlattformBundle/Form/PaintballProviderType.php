@@ -15,18 +15,18 @@ class PaintballProviderType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('name')
-            ->add('claim')
-            ->add('street')
-            ->add('zip')
-            ->add('city')
-            ->add('price')
-            ->add('telephone')
-            ->add('website')
-            ->add('image')
-            ->add('indoorFieldCount')
-            ->add('outdoorFieldCount')
-            ->add('regions')
+            ->add('name', null, array('attr' => array('class' => 'form-control')))
+            ->add('claim', null, array('attr' => array('class' => 'form-control')))
+            ->add('street', null, array('attr' => array('class' => 'form-control')))
+            ->add('zip', null, array('attr' => array('class' => 'form-control')))
+            ->add('city', null, array('attr' => array('class' => 'form-control')))
+            ->add('price', null, array('attr' => array('class' => 'form-control')))
+            ->add('telephone', null, array('attr' => array('class' => 'form-control')))
+            ->add('website', null, array('attr' => array('class' => 'form-control')))
+            ->add('image', null, array('attr' => array('class' => 'form-control')))
+            ->add('indoorFieldCount', null, array('attr' => array('class' => 'form-control')))
+            ->add('outdoorFieldCount', null, array('attr' => array('class' => 'form-control')))
+            ->add('regions', null, array('attr' => array('class' => 'form-control')))
         ;
     }
     
