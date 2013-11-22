@@ -9,4 +9,6 @@ class AdminController extends Controller
     public function indexAction() {
         return $this->render('BinaerpilotenFreizeitbookingPlattformBundle:Admin:index.html.twig');
     }
+    
+    
 }

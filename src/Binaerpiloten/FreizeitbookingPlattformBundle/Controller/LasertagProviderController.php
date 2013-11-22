@@ -25,12 +25,25 @@ class LasertagProviderController extends Controller
      * @Method("GET")
      * @Template("BinaerpilotenFreizeitbookingPlattformBundle:Admin/LasertagProvider:index.html.twig")
      */
-    public function indexAction()
+    public function indexAction(Request $request)
     {
         $em = $this->getDoctrine()->getManager();
 
-        $entities = $em->getRepository('BinaerpilotenFreizeitbookingPlattformBundle:LasertagProvider')->findAll();
-
+    	$qregion = $request->query->get('region');
+        if ($qregion) {
+        	$region = $em->getRepository('Binaerpiloten\FreizeitbookingPlattformBundle\Entity\Region')
+        				 ->findOneBy(array('urlname' => $qregion));
+			if($region !== null ) {
+				$q2 = $em->createQuery("SELECT p " .
+						"FROM Binaerpiloten\FreizeitbookingPlattformBundle\Entity\LasertagProvider p " .
+						"JOIN p.regions r " .
+						"WHERE r.id = " . $region->getId());
+				$entities = $q2->getResult();
+				
+			} 
+        } else {
+        	$entities = $em->getRepository('BinaerpilotenFreizeitbookingPlattformBundle:LasertagProvider')->findAll();
+        }
         return array(
             'entities' => $entities,
         );

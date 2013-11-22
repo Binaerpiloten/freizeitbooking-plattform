@@ -34,44 +34,8 @@
                         <a class="navbar-brand" href="{{ path('binaerpiloten_freizeitbooking_plattform_homepage') }}">Freizeitbooking</a>
                     </div>
                     <div class="navbar-collapse collapse">
-                        <ul class="nav navbar-nav">
-                            <li class="{{ 'homepage' in app.request.get('_route') ? ' active' }}">
-                                <a href="{{ path('binaerpiloten_freizeitbooking_plattform_homepage') }}">Home</a>
-                            </li>
-                            <!-- Freizeit-Navigation -->
-                            <li class="dropdown{{ 'gokart' in app.request.get('_route') ? ' active' }}">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Gokart <b class="caret"></b></a>
-                                    <ul class="dropdown-menu">
-                                        {% for menuregion in regions['gokart'] %}
-                                            <li><a href="{{ path('gokartlist',{'regionURLName': menuregion.getURLName}) }}">{{ menuregion.getName }}</a></li>
-                                        {% endfor %}
-                                    </ul>
-                            </li>
-                            <li class="dropdown{{ 'lasertag' in app.request.get('_route') ? ' active' }}">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Laser-Tag <b class="caret"></b></a>
-                                <ul class="dropdown-menu">
-                                    {% for menuregion in regions['lasertag'] %}
-                                        <li><a href="{{ path('lasertaglist',{'regionURLName': menuregion.getURLName}) }}">{{ menuregion.getName }}</a></li>
-                                    {% endfor %}
-                                </ul>
-                            </li>
-                            <li class="dropdown{{ 'paintball' in app.request.get('_route') ? ' active' }}">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Paintball <b class="caret"></b></a>
-                                <ul class="dropdown-menu">
-                                    {% for menuregion in regions['paintball'] %}
-                                        <li><a href="{{ path('paintballlist',{'regionURLName': menuregion.getURLName}) }}">{{ menuregion.getName }}</a></li>
-                                    {% endfor %}
-                                </ul>
-                            </li>
-                            <li class="dropdown{{ 'squash' in app.request.get('_route') ? ' active' }}">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Squash <b class="caret"></b></a>
-                                <ul class="dropdown-menu">
-                                    {% for menuregion in regions['squash'] %}
-                                        <li><a href="{{ path('squashlist',{'regionURLName': menuregion.getURLName}) }}">{{ menuregion.getName }}</a></li>
-                                    {% endfor %}
-                                </ul>
-                            </li>
-                        </ul>
+                        {% block navbarcontent %}
+                        {% endblock %}
                         <ul class="nav navbar-nav navbar-right">
                             {% if is_granted('ROLE_SUPER_ADMIN') %}
                                 <li>
