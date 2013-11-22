@@ -34,30 +34,6 @@ squashdetails:
     pattern: /squash/{regionURLName}/details/{id}
     defaults: { _controller: BinaerpilotenFreizeitbookingPlattformBundle:Default:squashDetails }
 
-lasertagprovider:
-    resource: "@BinaerpilotenFreizeitbookingPlattformBundle/Controller/LasertagProviderController.php"
-    type: annotation
-
-gokartprovider:
-    resource: "@BinaerpilotenFreizeitbookingPlattformBundle/Controller/GokartProviderController.php"
-    type: annotation
-
-paintballprovider:
-    resource: "@BinaerpilotenFreizeitbookingPlattformBundle/Controller/PaintballProviderController.php"
-    type: annotation
-
-squashprovider:
-    resource: "@BinaerpilotenFreizeitbookingPlattformBundle/Controller/SquashProviderController.php"
-    type: annotation
-
-region:
-    resource: "@BinaerpilotenFreizeitbookingPlattformBundle/Controller/RegionController.php"
-    type: annotation
-
-category:
-    resource: "@BinaerpilotenFreizeitbookingPlattformBundle/Controller/CategoryController.php"
-    type: annotation
-
-seotext:
-    resource: "@BinaerpilotenFreizeitbookingPlattformBundle/Controller/SEOTextController.php"
-    type: annotation
+binaerpiloten_freizeitbooking_plattform_admin:
+    resource: "@BinaerpilotenFreizeitbookingPlattformBundle/Resources/config/routing-admin.yml"
+    prefix:   /admin
