@@ -23,7 +23,7 @@ class PaintballProviderController extends Controller
      *
      * @Route("/", name="paintballprovider")
      * @Method("GET")
-     * @Template()
+     * @Template("BinaerpilotenFreizeitbookingPlattformBundle:Admin/PaintballProvider:index.html.twig")
      */
     public function indexAction()
     {
@@ -40,7 +40,7 @@ class PaintballProviderController extends Controller
      *
      * @Route("/", name="paintballprovider_create")
      * @Method("POST")
-     * @Template("BinaerpilotenFreizeitbookingPlattformBundle:PaintballProvider:new.html.twig")
+     * @Template("BinaerpilotenFreizeitbookingPlattformBundle:Admin/PaintballProvider:new.html.twig")
      */
     public function createAction(Request $request)
     {
@@ -86,7 +86,7 @@ class PaintballProviderController extends Controller
      *
      * @Route("/new", name="paintballprovider_new")
      * @Method("GET")
-     * @Template()
+     * @Template("BinaerpilotenFreizeitbookingPlattformBundle:Admin/PaintballProvider:new.html.twig")
      */
     public function newAction()
     {
@@ -104,7 +104,7 @@ class PaintballProviderController extends Controller
      *
      * @Route("/{id}", name="paintballprovider_show")
      * @Method("GET")
-     * @Template()
+     * @Template("BinaerpilotenFreizeitbookingPlattformBundle:Admin/PaintballProvider:show.html.twig")
      */
     public function showAction($id)
     {
@@ -129,7 +129,7 @@ class PaintballProviderController extends Controller
      *
      * @Route("/{id}/edit", name="paintballprovider_edit")
      * @Method("GET")
-     * @Template()
+     * @Template("BinaerpilotenFreizeitbookingPlattformBundle:Admin/PaintballProvider:edit.html.twig")
      */
     public function editAction($id)
     {
@@ -174,7 +174,7 @@ class PaintballProviderController extends Controller
      *
      * @Route("/{id}", name="paintballprovider_update")
      * @Method("PUT")
-     * @Template("BinaerpilotenFreizeitbookingPlattformBundle:PaintballProvider:edit.html.twig")
+     * @Template("BinaerpilotenFreizeitbookingPlattformBundle:Admin/PaintballProvider:edit.html.twig")
      */
     public function updateAction(Request $request, $id)
     {

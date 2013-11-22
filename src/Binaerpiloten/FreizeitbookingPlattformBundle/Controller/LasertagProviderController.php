@@ -23,7 +23,7 @@ class LasertagProviderController extends Controller
      *
      * @Route("/", name="lasertagprovider")
      * @Method("GET")
-     * @Template()
+     * @Template("BinaerpilotenFreizeitbookingPlattformBundle:Admin/LasertagProvider:index.html.twig")
      */
     public function indexAction()
     {
@@ -40,7 +40,7 @@ class LasertagProviderController extends Controller
      *
      * @Route("/", name="lasertagprovider_create")
      * @Method("POST")
-     * @Template("BinaerpilotenFreizeitbookingPlattformBundle:LasertagProvider:new.html.twig")
+     * @Template("BinaerpilotenFreizeitbookingPlattformBundle:Admin/LasertagProvider:new.html.twig")
      */
     public function createAction(Request $request)
     {
@@ -86,7 +86,7 @@ class LasertagProviderController extends Controller
      *
      * @Route("/new", name="lasertagprovider_new")
      * @Method("GET")
-     * @Template()
+     * @Template("BinaerpilotenFreizeitbookingPlattformBundle:Admin/LasertagProvider:new.html.twig")
      */
     public function newAction()
     {
@@ -104,7 +104,7 @@ class LasertagProviderController extends Controller
      *
      * @Route("/{id}", name="lasertagprovider_show")
      * @Method("GET")
-     * @Template()
+     * @Template("BinaerpilotenFreizeitbookingPlattformBundle:Admin/LasertagProvider:show.html.twig")
      */
     public function showAction($id)
     {
@@ -129,7 +129,7 @@ class LasertagProviderController extends Controller
      *
      * @Route("/{id}/edit", name="lasertagprovider_edit")
      * @Method("GET")
-     * @Template()
+     * @Template("BinaerpilotenFreizeitbookingPlattformBundle:Admin/LasertagProvider:edit.html.twig")
      */
     public function editAction($id)
     {
@@ -174,7 +174,7 @@ class LasertagProviderController extends Controller
      *
      * @Route("/{id}", name="lasertagprovider_update")
      * @Method("PUT")
-     * @Template("BinaerpilotenFreizeitbookingPlattformBundle:LasertagProvider:edit.html.twig")
+     * @Template("BinaerpilotenFreizeitbookingPlattformBundle:Admin/LasertagProvider:edit.html.twig")
      */
     public function updateAction(Request $request, $id)
     {

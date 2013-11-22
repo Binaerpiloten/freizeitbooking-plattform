@@ -23,7 +23,7 @@ class RegionController extends Controller
      *
      * @Route("/", name="region")
      * @Method("GET")
-     * @Template()
+     * @Template("BinaerpilotenFreizeitbookingPlattformBundle:Admin/Region:index.html.twig")
      */
     public function indexAction()
     {
@@ -40,7 +40,7 @@ class RegionController extends Controller
      *
      * @Route("/", name="region_create")
      * @Method("POST")
-     * @Template("BinaerpilotenFreizeitbookingPlattformBundle:Region:new.html.twig")
+     * @Template("BinaerpilotenFreizeitbookingPlattformBundle:Admin/Region:new.html.twig")
      */
     public function createAction(Request $request)
     {
@@ -86,7 +86,7 @@ class RegionController extends Controller
      *
      * @Route("/new", name="region_new")
      * @Method("GET")
-     * @Template()
+     * @Template("BinaerpilotenFreizeitbookingPlattformBundle:Admin/Region:new.html.twig")
      */
     public function newAction()
     {
@@ -104,7 +104,7 @@ class RegionController extends Controller
      *
      * @Route("/{id}", name="region_show")
      * @Method("GET")
-     * @Template()
+     * @Template("BinaerpilotenFreizeitbookingPlattformBundle:Admin/Region:show.html.twig")
      */
     public function showAction($id)
     {
@@ -129,7 +129,7 @@ class RegionController extends Controller
      *
      * @Route("/{id}/edit", name="region_edit")
      * @Method("GET")
-     * @Template()
+     * @Template("BinaerpilotenFreizeitbookingPlattformBundle:Admin/Region:edit.html.twig")
      */
     public function editAction($id)
     {
@@ -174,7 +174,7 @@ class RegionController extends Controller
      *
      * @Route("/{id}", name="region_update")
      * @Method("PUT")
-     * @Template("BinaerpilotenFreizeitbookingPlattformBundle:Region:edit.html.twig")
+     * @Template("BinaerpilotenFreizeitbookingPlattformBundle:Admin/Region:edit.html.twig")
      */
     public function updateAction(Request $request, $id)
     {

@@ -1,38 +1,38 @@
 binaerpiloten_freizeitbooking_plattform_homepage:
     pattern:  /
-    defaults: { _controller: BinaerpilotenFreizeitbookingPlattformBundle:Default:index }
+    defaults: { _controller: BinaerpilotenFreizeitbookingPlattformBundle:Website:index }
 
 gokartlist:
     pattern: /gokart/{regionURLName}
-    defaults: { _controller: BinaerpilotenFreizeitbookingPlattformBundle:Default:gokartList }
+    defaults: { _controller: BinaerpilotenFreizeitbookingPlattformBundle:Website:gokartList }
 
 gokartdetails:
     pattern: /gokart/{regionURLName}/details/{id}
-    defaults: { _controller: BinaerpilotenFreizeitbookingPlattformBundle:Default:gokartDetails }
+    defaults: { _controller: BinaerpilotenFreizeitbookingPlattformBundle:Website:gokartDetails }
 
 paintballlist:
     pattern: /paintball/{regionURLName}
-    defaults: { _controller: BinaerpilotenFreizeitbookingPlattformBundle:Default:paintballList }
+    defaults: { _controller: BinaerpilotenFreizeitbookingPlattformBundle:Website:paintballList }
 
 paintballdetails:
     pattern: /paintball/{regionURLName}/details/{id}
-    defaults: { _controller: BinaerpilotenFreizeitbookingPlattformBundle:Default:paintballDetails }
+    defaults: { _controller: BinaerpilotenFreizeitbookingPlattformBundle:Website:paintballDetails }
 
 lasertaglist:
     pattern: /lasertag/{regionURLName}
-    defaults: { _controller: BinaerpilotenFreizeitbookingPlattformBundle:Default:lasertagList }
+    defaults: { _controller: BinaerpilotenFreizeitbookingPlattformBundle:Website:lasertagList }
 
 lasertagdetails:
     pattern: /lasertag/{regionURLName}/details/{id}
-    defaults: { _controller: BinaerpilotenFreizeitbookingPlattformBundle:Default:lasertagDetails }
+    defaults: { _controller: BinaerpilotenFreizeitbookingPlattformBundle:Website:lasertagDetails }
 
 squashlist:
     pattern: /squash/{regionURLName}
-    defaults: { _controller: BinaerpilotenFreizeitbookingPlattformBundle:Default:squashList }
+    defaults: { _controller: BinaerpilotenFreizeitbookingPlattformBundle:Website:squashList }
 
 squashdetails:
     pattern: /squash/{regionURLName}/details/{id}
-    defaults: { _controller: BinaerpilotenFreizeitbookingPlattformBundle:Default:squashDetails }
+    defaults: { _controller: BinaerpilotenFreizeitbookingPlattformBundle:Website:squashDetails }
 
 binaerpiloten_freizeitbooking_plattform_admin:
     resource: "@BinaerpilotenFreizeitbookingPlattformBundle/Resources/config/routing-admin.yml"

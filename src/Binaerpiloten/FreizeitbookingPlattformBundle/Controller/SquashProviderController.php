@@ -23,7 +23,7 @@ class SquashProviderController extends Controller
      *
      * @Route("/", name="squashprovider")
      * @Method("GET")
-     * @Template()
+     * @Template("BinaerpilotenFreizeitbookingPlattformBundle:Admin/SquashProvider:index.html.twig")
      */
     public function indexAction()
     {
@@ -40,7 +40,7 @@ class SquashProviderController extends Controller
      *
      * @Route("/", name="squashprovider_create")
      * @Method("POST")
-     * @Template("BinaerpilotenFreizeitbookingPlattformBundle:SquashProvider:new.html.twig")
+     * @Template("BinaerpilotenFreizeitbookingPlattformBundle:Admin/SquashProvider:new.html.twig")
      */
     public function createAction(Request $request)
     {
@@ -86,7 +86,7 @@ class SquashProviderController extends Controller
      *
      * @Route("/new", name="squashprovider_new")
      * @Method("GET")
-     * @Template()
+     * @Template("BinaerpilotenFreizeitbookingPlattformBundle:Admin/SquashProvider:new.html.twig")
      */
     public function newAction()
     {
@@ -104,7 +104,7 @@ class SquashProviderController extends Controller
      *
      * @Route("/{id}", name="squashprovider_show")
      * @Method("GET")
-     * @Template()
+     * @Template("BinaerpilotenFreizeitbookingPlattformBundle:Admin/SquashProvider:show.html.twig")
      */
     public function showAction($id)
     {
@@ -129,7 +129,7 @@ class SquashProviderController extends Controller
      *
      * @Route("/{id}/edit", name="squashprovider_edit")
      * @Method("GET")
-     * @Template()
+     * @Template("BinaerpilotenFreizeitbookingPlattformBundle:Admin/SquashProvider:edit.html.twig")
      */
     public function editAction($id)
     {
@@ -174,7 +174,7 @@ class SquashProviderController extends Controller
      *
      * @Route("/{id}", name="squashprovider_update")
      * @Method("PUT")
-     * @Template("BinaerpilotenFreizeitbookingPlattformBundle:SquashProvider:edit.html.twig")
+     * @Template("BinaerpilotenFreizeitbookingPlattformBundle:Admin/SquashProvider:edit.html.twig")
      */
     public function updateAction(Request $request, $id)
     {

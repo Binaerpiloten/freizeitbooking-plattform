@@ -23,7 +23,7 @@ class GokartProviderController extends Controller
      *
      * @Route("/", name="gokartprovider")
      * @Method("GET")
-     * @Template()
+     * @Template("BinaerpilotenFreizeitbookingPlattformBundle:Admin/GokartProvider:index.html.twig")
      */
     public function indexAction()
     {
@@ -40,7 +40,7 @@ class GokartProviderController extends Controller
      *
      * @Route("/", name="gokartprovider_create")
      * @Method("POST")
-     * @Template("BinaerpilotenFreizeitbookingPlattformBundle:GokartProvider:new.html.twig")
+     * @Template("BinaerpilotenFreizeitbookingPlattformBundle:Admin/GokartProvider:new.html.twig")
      */
     public function createAction(Request $request)
     {
@@ -86,7 +86,7 @@ class GokartProviderController extends Controller
      *
      * @Route("/new", name="gokartprovider_new")
      * @Method("GET")
-     * @Template()
+	 * @Template("BinaerpilotenFreizeitbookingPlattformBundle:Admin/GokartProvider:new.html.twig")
      */
     public function newAction()
     {
@@ -104,7 +104,7 @@ class GokartProviderController extends Controller
      *
      * @Route("/{id}", name="gokartprovider_show")
      * @Method("GET")
-     * @Template()
+     * @Template("BinaerpilotenFreizeitbookingPlattformBundle:Admin/GokartProvider:show.html.twig")
      */
     public function showAction($id)
     {
@@ -129,7 +129,7 @@ class GokartProviderController extends Controller
      *
      * @Route("/{id}/edit", name="gokartprovider_edit")
      * @Method("GET")
-     * @Template()
+     * @Template("BinaerpilotenFreizeitbookingPlattformBundle:Admin/GokartProvider:edit.html.twig")
      */
     public function editAction($id)
     {
@@ -174,7 +174,7 @@ class GokartProviderController extends Controller
      *
      * @Route("/{id}", name="gokartprovider_update")
      * @Method("PUT")
-     * @Template("BinaerpilotenFreizeitbookingPlattformBundle:GokartProvider:edit.html.twig")
+     * @Template("BinaerpilotenFreizeitbookingPlattformBundle:Admin/GokartProvider:edit.html.twig")
      */
     public function updateAction(Request $request, $id)
     {

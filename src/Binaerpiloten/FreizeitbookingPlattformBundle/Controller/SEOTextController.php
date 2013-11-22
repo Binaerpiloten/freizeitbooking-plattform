@@ -23,7 +23,7 @@ class SEOTextController extends Controller
      *
      * @Route("/", name="seotext")
      * @Method("GET")
-     * @Template()
+     * @Template("BinaerpilotenFreizeitbookingPlattformBundle:Admin/SEOText:index.html.twig")
      */
     public function indexAction()
     {
@@ -40,7 +40,7 @@ class SEOTextController extends Controller
      *
      * @Route("/", name="seotext_create")
      * @Method("POST")
-     * @Template("BinaerpilotenFreizeitbookingPlattformBundle:SEOText:new.html.twig")
+     * @Template("BinaerpilotenFreizeitbookingPlattformBundle:Admin/SEOText:new.html.twig")
      */
     public function createAction(Request $request)
     {
@@ -86,7 +86,7 @@ class SEOTextController extends Controller
      *
      * @Route("/new", name="seotext_new")
      * @Method("GET")
-     * @Template()
+     * @Template("BinaerpilotenFreizeitbookingPlattformBundle:Admin/SEOText:new.html.twig")
      */
     public function newAction()
     {
@@ -104,7 +104,7 @@ class SEOTextController extends Controller
      *
      * @Route("/{id}", name="seotext_show")
      * @Method("GET")
-     * @Template()
+     * @Template("BinaerpilotenFreizeitbookingPlattformBundle:Admin/SEOText:show.html.twig")
      */
     public function showAction($id)
     {
@@ -129,7 +129,7 @@ class SEOTextController extends Controller
      *
      * @Route("/{id}/edit", name="seotext_edit")
      * @Method("GET")
-     * @Template()
+     * @Template("BinaerpilotenFreizeitbookingPlattformBundle:Admin/SEOText:edit.html.twig")
      */
     public function editAction($id)
     {
@@ -174,7 +174,7 @@ class SEOTextController extends Controller
      *
      * @Route("/{id}", name="seotext_update")
      * @Method("PUT")
-     * @Template("BinaerpilotenFreizeitbookingPlattformBundle:SEOText:edit.html.twig")
+     * @Template("BinaerpilotenFreizeitbookingPlattformBundle:Admin/SEOText:edit.html.twig")
      */
     public function updateAction(Request $request, $id)
     {

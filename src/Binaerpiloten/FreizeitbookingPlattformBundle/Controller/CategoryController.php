@@ -23,7 +23,7 @@ class CategoryController extends Controller
      *
      * @Route("/", name="category")
      * @Method("GET")
-     * @Template()
+     * @Template("BinaerpilotenFreizeitbookingPlattformBundle:Admin/Category:index.html.twig")
      */
     public function indexAction()
     {
@@ -40,7 +40,7 @@ class CategoryController extends Controller
      *
      * @Route("/", name="category_create")
      * @Method("POST")
-     * @Template("BinaerpilotenFreizeitbookingPlattformBundle:Category:new.html.twig")
+     * @Template("BinaerpilotenFreizeitbookingPlattformBundle:Admin/Category:new.html.twig")
      */
     public function createAction(Request $request)
     {
@@ -86,7 +86,7 @@ class CategoryController extends Controller
      *
      * @Route("/new", name="category_new")
      * @Method("GET")
-     * @Template()
+     * @Template("BinaerpilotenFreizeitbookingPlattformBundle:Admin/Category:new.html.twig")
      */
     public function newAction()
     {
@@ -104,7 +104,7 @@ class CategoryController extends Controller
      *
      * @Route("/{id}", name="category_show")
      * @Method("GET")
-     * @Template()
+     * @Template("BinaerpilotenFreizeitbookingPlattformBundle:Admin/Category:show.html.twig")
      */
     public function showAction($id)
     {
@@ -129,7 +129,7 @@ class CategoryController extends Controller
      *
      * @Route("/{id}/edit", name="category_edit")
      * @Method("GET")
-     * @Template()
+     * @Template("BinaerpilotenFreizeitbookingPlattformBundle:Admin/Category:edit.html.twig")
      */
     public function editAction($id)
     {
@@ -174,7 +174,7 @@ class CategoryController extends Controller
      *
      * @Route("/{id}", name="category_update")
      * @Method("PUT")
-     * @Template("BinaerpilotenFreizeitbookingPlattformBundle:Category:edit.html.twig")
+     * @Template("BinaerpilotenFreizeitbookingPlattformBundle:Admin/Category:edit.html.twig")
      */
     public function updateAction(Request $request, $id)
     {

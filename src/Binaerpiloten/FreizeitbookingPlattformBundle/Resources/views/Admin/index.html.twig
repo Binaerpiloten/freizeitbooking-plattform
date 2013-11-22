@@ -1,10 +1,6 @@
-<!doctype html5>
-<html>
-    <head>
-        <title>Freizeitbooking Admin</title>
-        <meta charset="UTF-8" />
-    </head>
-    <body>
+{% extends 'BinaerpilotenFreizeitbookingPlattformBundle:Admin:backend-base.html.twig' %}
+
+{% block body%}
         <h1>Howdy, {{ app.user.username }}?</h1>
         <p>
             You are {{ app.user.roles|join(', ') }}.
@@ -19,5 +15,4 @@
                 {{ 'layout.logout'|trans({}, 'FOSUserBundle') }}
             </a>
         </p>
-    </body>
-</html>
+{% endblock %}
