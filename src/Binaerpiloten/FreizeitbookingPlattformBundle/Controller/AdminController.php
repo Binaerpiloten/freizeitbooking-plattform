@@ -7,7 +7,9 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 class AdminController extends Controller
 {
     public function indexAction() {
-        return $this->render('BinaerpilotenFreizeitbookingPlattformBundle:Admin:index.html.twig');
+    	$em = $this->getDoctrine()->getManager();
+    	$regions = WebsiteController::getRegions($em);
+        return $this->render('BinaerpilotenFreizeitbookingPlattformBundle:Admin:index.html.twig', array('regions'=> $regions));
     }
     
     

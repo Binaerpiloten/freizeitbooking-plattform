@@ -9,7 +9,8 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 class WebsiteController extends Controller
 {
     public function indexAction() {
-        $regions = $this->getRegions();
+        $em = $this->getDoctrine()->getManager();
+        $regions = $this->getRegions($em);
         return $this->render('BinaerpilotenFreizeitbookingPlattformBundle:Website:index.html.twig',
                 array('regions' => $regions));
     }
@@ -48,8 +49,7 @@ class WebsiteController extends Controller
 
     // helper functions go here -----------------------------------------------------------------------
 
-    protected function getRegions() {
-        $em = $this->getDoctrine()->getManager();
+    public static function getRegions($em) {
         $regions = array(); 
         $regions['all'] = $em->getRepository('Binaerpiloten\FreizeitbookingPlattformBundle\Entity\Region')->findAll();
         
@@ -102,7 +102,7 @@ class WebsiteController extends Controller
 
         $seotext = empty($result) ? null : $result[0];
 
-        $regions = $this->getRegions();
+        $regions = $this->getRegions($em);
 
         $q2 = $em->createQuery("SELECT p " .
                                "FROM Binaerpiloten\FreizeitbookingPlattformBundle\Entity\\" . $providerEntityName . " p " .
@@ -119,7 +119,7 @@ class WebsiteController extends Controller
         $provider = $em->getRepository('Binaerpiloten\FreizeitbookingPlattformBundle\Entity\\' . $providerEntityName)
                        ->findOneBy(array('id' => $id));
 
-        $regions = $this->getRegions();
+        $regions = $this->getRegions($em);
 
         return $this->render('BinaerpilotenFreizeitbookingPlattformBundle:Website:'. $templateName,
                 array('provider' =>$provider, 'regions' => $regions));
