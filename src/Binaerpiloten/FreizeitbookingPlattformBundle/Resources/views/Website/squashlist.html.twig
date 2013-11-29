@@ -25,5 +25,5 @@
 {% endblock %}
 
 {% block adminbutton %}
-    <a href="{{ path('squashprovider',{ }) }}">Liste bearbeiten</a>
+    <a href="{{ path('squashprovider',{'region': region.getURLName}) }}">Liste bearbeiten</a>
 {% endblock %}

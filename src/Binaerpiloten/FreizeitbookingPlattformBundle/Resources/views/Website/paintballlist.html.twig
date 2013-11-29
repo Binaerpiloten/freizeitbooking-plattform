@@ -26,5 +26,5 @@
 {% endblock %}
 
 {% block adminbutton %}
-    <a href="{{ path('paintballprovider',{ }) }}">Liste bearbeiten</a>
+    <a href="{{ path('paintballprovider',{'region': region.getURLName}) }}">Liste bearbeiten</a>
 {% endblock %}

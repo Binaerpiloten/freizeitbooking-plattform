@@ -25,5 +25,5 @@
 {% endblock %}
 
 {% block adminbutton %}
-    <a href="{{ path('lasertagprovider',{ }) }}">Liste bearbeiten</a>
+    <a href="{{ path('lasertagprovider',{'region': region.getURLName}) }}">Liste bearbeiten</a>
 {% endblock %}

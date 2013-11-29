@@ -25,5 +25,5 @@
 {% endblock %}
 
 {% block adminbutton %}
-    <a href="{{ path('gokartprovider',{ }) }}">Liste bearbeiten</a>
+    <a href="{{ path('gokartprovider',{'region': region.getURLName}) }}">Liste bearbeiten</a>
 {% endblock %}

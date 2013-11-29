@@ -3,71 +3,11 @@
 {% block footer %}
 {% endblock %}
 
-{% block navbarcontent %}
-<ul class="nav navbar-nav">
-    <li class="{{ 'homepage' in app.request.get('_route') ? ' active' }}">
-        <a href="{{ path('admin_index') }}">Dashboard</a>
-    </li>
-    <!-- Freizeit-Navigation -->
-    <li class="dropdown{{ 'gokart' in app.request.get('_route') ? ' active' }}">
-        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Gokart <b class="caret"></b></a>
-        <ul class="dropdown-menu">
-            <li><a href="{{ path('gokartprovider',{ }) }}"><span class="glyphicon glyphicon-list"></span> Liste</a></li>
-            <li class="divider"></li>
-            <li><a href="{{ path('gokartprovider_new',{ }) }}"><span class="glyphicon glyphicon-plus"></span> Neu</a></li>
-        </ul>
-    </li>
-    <li class="dropdown{{ 'lasertag' in app.request.get('_route') ? ' active' }}">
-        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Laser-Tag <b class="caret"></b></a>
-        <ul class="dropdown-menu">
-            <li><a href="{{ path('lasertagprovider',{ }) }}"><span class="glyphicon glyphicon-list"></span> Liste</a></li>
-            <li class="divider"></li>
-            <li><a href="{{ path('lasertagprovider_new',{ }) }}"><span class="glyphicon glyphicon-plus"></span> Neu</a></li>
-        </ul>
-    </li>
-    <li class="dropdown{{ 'paintball' in app.request.get('_route') ? ' active' }}">
-        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Paintball <b class="caret"></b></a>
-        <ul class="dropdown-menu">
-            <li><a href="{{ path('paintballprovider',{ }) }}"><span class="glyphicon glyphicon-list"></span> Liste</a></li>
-            <li class="divider"></li>
-            <li><a href="{{ path('paintballprovider_new',{ }) }}"><span class="glyphicon glyphicon-plus"></span> Neu</a></li>
-        </ul>
-    </li>
-    <li class="dropdown{{ 'squash' in app.request.get('_route') ? ' active' }}">
-        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Squash <b class="caret"></b></a>
-        <ul class="dropdown-menu">
-            <li><a href="{{ path('squashprovider',{ }) }}"><span class="glyphicon glyphicon-list"></span> Liste</a></li>
-            <li class="divider"></li>
-            <li><a href="{{ path('squashprovider_new',{ }) }}"><span class="glyphicon glyphicon-plus"></span> Neu</a></li>
-        </ul>
-    </li>
-    <li class="dropdown{{ 'seotext' in app.request.get('_route') ? ' active' }}">
-        <a href="#" class="dropdown-toggle" data-toggle="dropdown">SEOText <b class="caret"></b></a>
-        <ul class="dropdown-menu">
-            <li><a href="{{ path('seotext',{ }) }}"><span class="glyphicon glyphicon-list"></span> Liste</a></li>
-            <li class="divider"></li>
-            <li><a href="{{ path('seotext_new',{ }) }}"><span class="glyphicon glyphicon-plus"></span> Neu</a></li>
-        </ul>
-    </li>
-    <li class="dropdown{{ 'region' in app.request.get('_route') ? ' active' }}">
-        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Region <b class="caret"></b></a>
-        <ul class="dropdown-menu">
-            <li><a href="{{ path('region',{ }) }}"><span class="glyphicon glyphicon-list"></span> Liste</a></li>
-            <li class="divider"></li>
-            <li><a href="{{ path('region_new',{ }) }}"><span class="glyphicon glyphicon-plus"></span> Neu</a></li>
-        </ul>
-    </li>
-    <li class="dropdown{{ 'category' in app.request.get('_route') ? ' active' }}">
-        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Category <b class="caret"></b></a>
-        <ul class="dropdown-menu">
-            <li><a href="{{ path('category',{ }) }}"><span class="glyphicon glyphicon-list"></span> Liste</a></li>
-            <li class="divider"></li>
-            <li><a href="{{ path('category_new',{ }) }}"><span class="glyphicon glyphicon-plus"></span> Neu</a></li>
-        </ul>
-    </li>
-</ul>
+{% block navigation %}
 {% endblock %}
 
+{% block logo %}
+{% endblock %}
 
 {% block content %}
     {% block body %}

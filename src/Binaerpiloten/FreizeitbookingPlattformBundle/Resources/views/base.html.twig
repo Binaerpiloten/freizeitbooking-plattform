@@ -20,13 +20,103 @@
   </head>
 
     <body>
+        {% if is_granted('ROLE_SUPER_ADMIN') %}
+        <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+            <div class="container">
+                <div class="navbar-header pull-left">
+                    <a class="navbar-brand" href="{{ path('binaerpiloten_freizeitbooking_plattform_homepage') }}">
+                        <span class="glyphicon glyphicon-home"></span>
+                    </a>
+                </div>
+                <ul class="nav navbar-nav">
+                        <li class="{{ 'admin_index' in app.request.get('_route') ? ' active' }}">
+                            <a href="{{ path('admin_index') }}">Dashboard</a>
+                        </li>
+                        <!-- Freizeit-Navigation -->
+                        <li class="dropdown{{ 'gokartprovider' in app.request.get('_route') ? ' active' }}">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Gokart <b class="caret"></b></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="{{ path('gokartprovider',{ }) }}"><span class="glyphicon glyphicon-list"></span> Liste anzeigen</a></li>
+                                <li class="divider"></li>
+                                <li><a href="{{ path('gokartprovider_new',{ }) }}"><span class="glyphicon glyphicon-plus"></span> Neu</a></li>
+                            </ul>
+                        </li>
+                        <li class="dropdown{{ 'lasertagprovider' in app.request.get('_route') ? ' active' }}">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Laser-Tag <b class="caret"></b></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="{{ path('lasertagprovider',{ }) }}"><span class="glyphicon glyphicon-list"></span> Liste anzeigen</a></li>
+                                <li class="divider"></li>
+                                <li><a href="{{ path('lasertagprovider_new',{ }) }}"><span class="glyphicon glyphicon-plus"></span> Neu</a></li>
+                            </ul>
+                        </li>
+                        <li class="dropdown{{ 'paintballprovider' in app.request.get('_route') ? ' active' }}">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Paintball <b class="caret"></b></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="{{ path('paintballprovider',{ }) }}"><span class="glyphicon glyphicon-list"></span> Liste anzeigen</a></li>
+                                <li class="divider"></li>
+                                <li><a href="{{ path('paintballprovider_new',{ }) }}"><span class="glyphicon glyphicon-plus"></span> Neu</a></li>
+                            </ul>
+                        </li>
+                        <li class="dropdown{{ 'squashprovider' in app.request.get('_route') ? ' active' }}">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Squash <b class="caret"></b></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="{{ path('squashprovider',{ }) }}"><span class="glyphicon glyphicon-list"></span> Liste anzeigen</a></li>
+                                <li class="divider"></li>
+                                <li><a href="{{ path('squashprovider_new',{ }) }}"><span class="glyphicon glyphicon-plus"></span> Neu</a></li>
+                            </ul>
+                        </li>
+                        <li class="dropdown{{ 'seotext' in app.request.get('_route') ? ' active' }}">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">SEOText <b class="caret"></b></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="{{ path('seotext',{ }) }}"><span class="glyphicon glyphicon-list"></span> Liste anzeigen</a></li>
+                                <li class="divider"></li>
+                                <li><a href="{{ path('seotext_new',{ }) }}"><span class="glyphicon glyphicon-plus"></span> Neu</a></li>
+                            </ul>
+                        </li>
+                        <li class="dropdown{{ 'region' in app.request.get('_route') ? ' active' }}">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Region <b class="caret"></b></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="{{ path('region',{ }) }}"><span class="glyphicon glyphicon-list"></span> Liste anzeigen</a></li>
+                                <li class="divider"></li>
+                                <li><a href="{{ path('region_new',{ }) }}"><span class="glyphicon glyphicon-plus"></span> Neu</a></li>
+                            </ul>
+                        </li>
+                        <li class="dropdown{{ 'category' in app.request.get('_route') ? ' active' }}">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Category <b class="caret"></b></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="{{ path('category',{ }) }}"><span class="glyphicon glyphicon-list"></span> Liste anzeigen</a></li>
+                                <li class="divider"></li>
+                                <li><a href="{{ path('category_new',{ }) }}"><span class="glyphicon glyphicon-plus"></span> Neu</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                    <ul class="nav navbar-nav navbar-right">
+                            <li>
+                                {% block adminbutton %}{% endblock %}
+                            </li>
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">{{ app.user.username }} <b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    <li><a href="{{ path('admin_index', { }) }}">Dashboard</a></li>
+                                    <li><a href="#">Mein Profil</a></li>
+                                    <li class="divider"></li>
+                                    <li><a href="{{ path('fos_user_security_logout',{ }) }}">Logout</a></li>
+                                </ul>
+                            </li>
+                    </ul>
+                </div>
+            </div>
+        {% endif %}
+
         <div class="container">
             <!-- Logo -->
+            {% block logo %}
             <div class="logo-container">
               <div class="row">
                   <div class="logo"><a href="{{ path('binaerpiloten_freizeitbooking_plattform_homepage') }}"><img src="{{ asset('bundles/freizeitbookingplattform/img/freizeitbooking-logo.png') }}" alt="Freizeitbooking Logo" /></a></div>
               </div>
             </div>
+            {% endblock %}
 
             {% block navigation %}
                 <!-- Fixed navbar -->
@@ -38,26 +128,44 @@
                             </a>
                         </div>
                         <div class="navbar-collapse collapse">
-                            {% block navbarcontent %}
-                            {% endblock %}
-                            <ul class="nav navbar-nav navbar-right">
-                                {% if is_granted('ROLE_SUPER_ADMIN') %}
-                                <li>
-                                    {% block adminbutton %}{% endblock %}
-                                </li>
-                                <li class="dropdown">
-                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">{{ app.user.username }} <b class="caret"></b></a>
+                            <ul class="nav navbar-nav">
+                                <!-- Freizeit-Navigation -->
+                                <li class="dropdown{{ 'gokart' in app.request.get('_route') ? ' active' }}">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Gokart <b class="caret"></b></a>
                                     <ul class="dropdown-menu">
-                                        <li><a href="{{ path('admin_index', { }) }}">Dashboard</a></li>
-                                        <li><a href="#">Mein Profil</a></li>
-                                        <li class="divider"></li>
-                                        <li><a href="{{ path('fos_user_security_logout',{ }) }}">Logout</a></li>
+                                    {% for menuregion in regions['gokart'] %}
+                                        <li><a href="{{ path('gokartlist',{'regionURLName': menuregion.getURLName}) }}">{{ menuregion.getName }}</a></li>
+                                    {% endfor %}
                                     </ul>
                                 </li>
-                                {% else %}
-                                <li>
-                                    <a href="{{ path('fos_user_security_login',{ })}}">Login</a>
+                                <li class="dropdown{{ 'lasertag' in app.request.get('_route') ? ' active' }}">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Laser-Tag <b class="caret"></b></a>
+                                    <ul class="dropdown-menu">
+                                        {% for menuregion in regions['lasertag'] %}
+                                        <li><a href="{{ path('lasertaglist',{'regionURLName': menuregion.getURLName}) }}">{{ menuregion.getName }}</a></li>
+                                        {% endfor %}
+                                    </ul>
                                 </li>
+                                <li class="dropdown{{ 'paintball' in app.request.get('_route') ? ' active' }}">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Paintball <b class="caret"></b></a>
+                                    <ul class="dropdown-menu">
+                                        {% for menuregion in regions['paintball'] %}
+                                        <li><a href="{{ path('paintballlist',{'regionURLName': menuregion.getURLName}) }}">{{ menuregion.getName }}</a></li>
+                                        {% endfor %}
+                                    </ul>
+                                </li>
+                                <li class="dropdown{{ 'squash' in app.request.get('_route') ? ' active' }}">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Squash <b class="caret"></b></a>
+                                    <ul class="dropdown-menu">
+                                        {% for menuregion in regions['squash'] %}
+                                        <li><a href="{{ path('squashlist',{'regionURLName': menuregion.getURLName}) }}">{{ menuregion.getName }}</a></li>
+                                        {% endfor %}
+                                    </ul>
+                                </li>
+                            </ul>
+                            <ul class="nav navbar-nav navbar-right">
+                                {% if not is_granted('ROLE_SUPER_ADMIN') %}
+                                <li><a href="{{ path('fos_user_security_login',{ })}}">Login</a></li>
                                 {% endif %}
                             </ul>
                         </div>
@@ -72,8 +180,37 @@
         {% block footer %}
         <div id="footer">
             <div class="container">
-                <p class="text-muted credit"><a href="impressum.html">Impressum</a> - <a href="#">Aktuelles zu Gokart</a></p>
-            </div>
+              <div class="row">
+                <div class="col-xs-12">
+                  <div class="footer-head"></div>
+                </div>
+                <div class="col-xs-6">
+                  <div class="footer-copyright">
+                  created 2013 by Binärpiloten
+                  </div>
+                </div>
+                 <div class="col-xs-3">
+                  <div class="footer-kategorien">
+                  KATEGORIEN
+                  <div class="list-group">
+                    <a href="#" class="list-group-item">Freizeit</a>
+                    <a href="#" class="list-group-item">Events</a>
+                    <a href="#" class="list-group-item">Angebote</a>
+                  </div>
+                  </div>
+                </div>
+                 <div class="col-xs-3">
+                  <div class="footer-allgemein">
+                  ALLGEMEIN
+                    <div class="list-group">
+                    <a href="#" class="list-group-item">Impressum</a>
+                    <a href="#" class="list-group-item">Kontakt</a>
+                    <a href="#" class="list-group-item">AGB</a>
+                  </div>
+                  </div>
+                </div>
+              </div>
+          </div>
         </div>
         {% endblock %}
 
