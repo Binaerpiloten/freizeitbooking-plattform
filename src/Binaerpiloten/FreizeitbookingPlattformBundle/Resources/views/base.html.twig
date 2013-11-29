@@ -21,9 +21,16 @@
 
     <body>
         <div class="container">
+            <!-- Logo -->
+            <div class="logo-container">
+              <div class="row">
+                  <div class="logo"><img src="{{ asset('bundles/freizeitbookingplattform/img/freizeitbooking-logo.png') }}" alt="Freizeitbooking Logo" /></div>
+              </div>
+            </div>
+
             {% block navigation %}
                 <!-- Fixed navbar -->
-                <div class="navbar navbar-default">
+                <div class="navbar navbar-default" role="navigation">
                     <div class="container">
                         <div class="navbar-header pull-left">
                             <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
@@ -53,14 +60,14 @@
                                 {% else %}
                                     <li>
                                         <a href="{{ path('fos_user_security_login',{ })}}">Login</a>
-                                    </li>                           
+                                    </li>
                                 {% endif %}
                                 </ul>
-                        </div><!-- Freizeit-Navigation Ende -->
+                        </div>
                     </div>
               </div>
             {% endblock %}
-            
+
             {% block content %}
             {% endblock %}
         </div>
