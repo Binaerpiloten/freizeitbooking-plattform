@@ -1,33 +1,36 @@
 {% extends 'BinaerpilotenFreizeitbookingPlattformBundle:Website:website-base.html.twig' %}
 
 {% block content %}
-      <div class="list-header">
-        <h1>{% block heading %}{% endblock %} {{ region.name }}</h1>
-        <p class="lead">{{ region.description }}</p>
-      </div>
-
       <div class="row">
         <!-- Sidebar -->
         <div class="col-md-3">
+            <div class="bs-sidenav-head">
+                <h2>St&auml;dte</h2>
+            </div>
             <div class="bs-sidenav">
                 <ul class="nav bs-sidenav">
                     {% block menuregions %}{% endblock %}
                 </ul> 
             </div>
+            <div class="bs-sidetext-head">
+                <h2>{% if seotext is not null %}{{ seotext.getHeading }}{% endif %}</h2>
+            </div>
+            <div class="bs-sidetext">
+              <p>{% if seotext is not null %}{{ seotext.getText }}{% endif %}</p>
+            </div>
         </div>
 
         <div class="col-md-9">
+            <div class="row">
+                <h1>{% block heading %}{% endblock %} {{ region.name }}</h1>
+                <p class="lead">{{ region.description }}</p>
+            </div>
+
             {% for provider in providers %}
                 <div class="liste-zeile row">
                     {% block providerinfo %}{% endblock %}
                 </div>
             {% endfor %}
-
-          <!-- Info text -->
-          <div class="info-text hidden-xs">
-          <h3>{% if seotext is not null %}{{ seotext.getHeading }}{% endif %}</h3>
-          <p>{% if seotext is not null %}{{ seotext.getText }}{% endif %}</p>
-          </div>
         </div>
       </div>
 
