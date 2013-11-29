@@ -59,3 +59,21 @@ code {
   background-color: #f7f5fa;
   border-radius: 5px;
 }
+
+.logo-container {
+  margin-top: 40px;
+}
+
+.navbar {
+  min-height: 40px;
+}
+
+.navbar-brand {
+  padding-top: 8px;
+  padding-bottom: 8px;
+}
+
+.navbar-nav > li > a {
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
