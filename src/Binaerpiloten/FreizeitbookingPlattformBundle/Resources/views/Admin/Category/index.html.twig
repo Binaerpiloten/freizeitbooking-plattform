@@ -3,7 +3,7 @@
 {% block body -%}
     <h1>Category list</h1>
 
-    <table class="records_list">
+    <table class="records_list  table table-striped table-hover">
         <thead>
             <tr>
                 <th>Id</th>
@@ -31,11 +31,7 @@
         </tbody>
     </table>
 
-        <ul>
-        <li>
-            <a href="{{ path('category_new') }}">
+            <a href="{{ path('category_new') }}" class='btn btn-primary' type='button'>
                 Create a new entry
             </a>
-        </li>
-    </ul>
     {% endblock %}

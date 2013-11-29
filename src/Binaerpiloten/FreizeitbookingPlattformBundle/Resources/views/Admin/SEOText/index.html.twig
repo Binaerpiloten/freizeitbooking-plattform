@@ -3,7 +3,7 @@
 {% block body -%}
     <h1>SEOText list</h1>
 
-    <table class="records_list">
+    <table class="records_list table table-striped table-hover">
         <thead>
             <tr>
                 <th>Id</th>
@@ -33,11 +33,8 @@
         </tbody>
     </table>
 
-        <ul>
-        <li>
-            <a href="{{ path('seotext_new') }}">
+
+            <a href="{{ path('seotext_new') }}" class='btn btn-primary' type='button'>
                 Create a new entry
             </a>
-        </li>
-    </ul>
     {% endblock %}
