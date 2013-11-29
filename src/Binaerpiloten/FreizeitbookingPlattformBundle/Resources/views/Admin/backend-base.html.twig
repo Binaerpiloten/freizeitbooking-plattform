@@ -6,7 +6,7 @@
 {% block navbarcontent %}
 <ul class="nav navbar-nav">
     <li class="{{ 'homepage' in app.request.get('_route') ? ' active' }}">
-        <a href="{{ path('binaerpiloten_freizeitbooking_plattform_homepage') }}">Home</a>
+        <a href="{{ path('admin_index') }}">Dashboard</a>
     </li>
     <!-- Freizeit-Navigation -->
     <li class="dropdown{{ 'gokart' in app.request.get('_route') ? ' active' }}">
