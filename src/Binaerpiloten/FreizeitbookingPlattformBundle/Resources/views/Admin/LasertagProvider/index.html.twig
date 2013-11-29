@@ -1,7 +1,7 @@
 {% extends 'BinaerpilotenFreizeitbookingPlattformBundle:Admin:backend-base.html.twig' %}
 
 {% block body -%}
-    <h1>LasertagProvider list</h1>
+    <h1>Lasertag-Anbieter {% if app.request.get('region') %}<small>filter: {{ app.request.get('region') }}</small>{% endif %}</h1>
 
     <table class="records_list table table-striped table-hover">
         <thead>
@@ -47,11 +47,7 @@
         </tbody>
     </table>
 
-        <ul>
-        <li>
-            <a href="{{ path('lasertagprovider_new') }}">
+            <a href="{{ path('lasertagprovider_new') }}" class='btn btn-primary' type='button'>
                 Create a new entry
             </a>
-        </li>
-    </ul>
     {% endblock %}

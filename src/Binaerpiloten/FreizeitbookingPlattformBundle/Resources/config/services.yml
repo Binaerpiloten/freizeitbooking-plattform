@@ -2,6 +2,9 @@ parameters:
 #    binaerpiloten_freizeitbooking_plattform.example.class: Binaerpiloten\FreizeitbookingPlattformBundle\Example
 
 services:
-#    binaerpiloten_freizeitbooking_plattform.example:
-#        class: %binaerpiloten_freizeitbooking_plattform.example.class%
-#        arguments: [@service_id, "plain_value", %parameter%]
+    binaerpiloten_freizeitbooking_plattform.twig.region_extension:
+        class: Binaerpiloten\FreizeitbookingPlattformBundle\Twig\RegionExtension
+        tags:
+            - { name: twig.extension }
+        arguments:
+            - "@doctrine.orm.entity_manager"

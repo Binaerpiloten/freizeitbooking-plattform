@@ -1,18 +1,61 @@
 {% extends 'BinaerpilotenFreizeitbookingPlattformBundle:Admin:backend-base.html.twig' %}
 
 {% block body%}
-        <h1>Howdy, {{ app.user.username }}?</h1>
-        <p>
-            You are {{ app.user.roles|join(', ') }}.
-        </p>
-        <ul>
-            {% for target in ['lasertagprovider','gokartprovider','paintballprovider','squashprovider','region','category','seotext'] %}
-            <li><a href="{{ path(target) }}">Edit {{ target }}s</a></li>
+        <h1>Willkommen {{ app.user.username }}</h1>
+
+        <div class="row">
+            <div id="chart1_div" class="col-xs-6" style='height: 500px'></div>
+            <div id="chart2_div" class="col-xs-6" style="height: 500px;"></div>
+        </div>
+{% endblock %}
+
+{% block javascript %}
+    <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+    <script type="text/javascript">
+      google.load("visualization", "1", {packages:["corechart"]});
+      google.setOnLoadCallback(drawChart);
+      function drawChart() {
+        var data = google.visualization.arrayToDataTable([
+          ['Regionen', '{% autoescape false %}{{ providerTypes|join("', '") }}{%endautoescape%}'],
+          {% for region, providers in countdata %}
+              ['{{ region }}', {{ providers|join(', ') }}],
+          {% endfor %}
+        ]);
+
+        var options = {
+          title: 'Company Performance',
+          vAxis: {title: 'Regionen'},
+          isStacked: true,
+        };
+
+        var chart = new google.visualization.BarChart(document.getElementById('chart1_div'));
+        chart.draw(data, options);
+      }
+    </script>
+    <script type='text/javascript'>
+     google.load('visualization', '1', {'packages': ['geochart']});
+     google.setOnLoadCallback(drawMarkersMap);
+
+      function drawMarkersMap() {
+      var data = google.visualization.arrayToDataTable([
+        ['Region', 'Anbieter'],
+        {% for region, providers in countdata %}
+            {% set counter = 0 %}
+            {% for count in providers %}
+                {% set counter = counter + count %}
             {% endfor %}
-        </ul>
-        <p>
-            <a href="{{ path('fos_user_security_logout') }}">
-                {{ 'layout.logout'|trans({}, 'FOSUserBundle') }}
-            </a>
-        </p>
+            ['{{ region }}', {{ counter }}],
+        {% endfor %}
+      ]);
+
+      var options = {
+        region: 'DE',
+        displayMode: 'markers',
+        colorAxis: {colors: ['white', 'red']}
+      };
+
+      var chart = new google.visualization.GeoChart(document.getElementById('chart2_div'));
+      chart.draw(data, options);
+    };
+    </script>
 {% endblock %}

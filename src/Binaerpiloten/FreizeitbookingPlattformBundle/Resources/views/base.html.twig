@@ -11,6 +11,9 @@
 
     <title>Freizeitaktivitäten online buchen | freizeitbooking.de</title>
 
+    {% block javascript %}
+    {% endblock %}
+
     {% block stylesheets %}
         <!-- Bootstrap core CSS -->
         <link rel="stylesheet" href="{{ asset('bundles/freizeitbookingplattform/css/bootstrap.css') }}" />
@@ -21,6 +24,7 @@
 
     <body>
         {% if is_granted('ROLE_SUPER_ADMIN') %}
+        {% set allRegions = globalGetRegions() %}
         <div class="navbar navbar-default navbar-fixed-top" role="navigation">
             <div class="container">
                 <div class="navbar-header pull-left">
@@ -38,6 +42,10 @@
                             <ul class="dropdown-menu">
                                 <li><a href="{{ path('gokartprovider',{ }) }}"><span class="glyphicon glyphicon-list"></span> Liste anzeigen</a></li>
                                 <li class="divider"></li>
+                                {% for region in allRegions %}
+                                    <li><a href="{{ path('gokartprovider',{ 'region': region.getURLName }) }}">{{ region.getName }}</a></li>
+                                {% endfor %}
+                                <li class="divider"></li>
                                 <li><a href="{{ path('gokartprovider_new',{ }) }}"><span class="glyphicon glyphicon-plus"></span> Neu</a></li>
                             </ul>
                         </li>
@@ -45,6 +53,10 @@
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown">Laser-Tag <b class="caret"></b></a>
                             <ul class="dropdown-menu">
                                 <li><a href="{{ path('lasertagprovider',{ }) }}"><span class="glyphicon glyphicon-list"></span> Liste anzeigen</a></li>
+                                <li class="divider"></li>
+                                {% for region in allRegions %}
+                                    <li><a href="{{ path('lasertagprovider',{ 'region': region.getURLName }) }}">{{ region.getName }}</a></li>
+                                {% endfor %}
                                 <li class="divider"></li>
                                 <li><a href="{{ path('lasertagprovider_new',{ }) }}"><span class="glyphicon glyphicon-plus"></span> Neu</a></li>
                             </ul>
@@ -54,6 +66,10 @@
                             <ul class="dropdown-menu">
                                 <li><a href="{{ path('paintballprovider',{ }) }}"><span class="glyphicon glyphicon-list"></span> Liste anzeigen</a></li>
                                 <li class="divider"></li>
+                                {% for region in allRegions %}
+                                    <li><a href="{{ path('paintballprovider',{ 'region': region.getURLName }) }}">{{ region.getName }}</a></li>
+                                {% endfor %}
+                                <li class="divider"></li>
                                 <li><a href="{{ path('paintballprovider_new',{ }) }}"><span class="glyphicon glyphicon-plus"></span> Neu</a></li>
                             </ul>
                         </li>
@@ -61,6 +77,10 @@
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown">Squash <b class="caret"></b></a>
                             <ul class="dropdown-menu">
                                 <li><a href="{{ path('squashprovider',{ }) }}"><span class="glyphicon glyphicon-list"></span> Liste anzeigen</a></li>
+                                <li class="divider"></li>
+                                {% for region in allRegions %}
+                                    <li><a href="{{ path('squashprovider',{ 'region': region.getURLName }) }}">{{ region.getName }}</a></li>
+                                {% endfor %}
                                 <li class="divider"></li>
                                 <li><a href="{{ path('squashprovider_new',{ }) }}"><span class="glyphicon glyphicon-plus"></span> Neu</a></li>
                             </ul>

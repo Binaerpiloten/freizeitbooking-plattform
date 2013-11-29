@@ -34,17 +34,17 @@ class GokartProviderController extends Controller
         	$region = $em->getRepository('Binaerpiloten\FreizeitbookingPlattformBundle\Entity\Region')
         				 ->findOneBy(array('urlname' => $qregion));
 			if($region !== null ) {
-				$q2 = $em->createQuery("SELECT p " .
-						"FROM Binaerpiloten\FreizeitbookingPlattformBundle\Entity\GokartProvider p " .
-						"JOIN p.regions r " .
-						"WHERE r.id = " . $region->getId());
-				$entities = $q2->getResult();
+			    $q2 = $em->createQuery("SELECT p " .
+			            "FROM Binaerpiloten\FreizeitbookingPlattformBundle\Entity\GokartProvider p " .
+			            "JOIN p.regions r " .
+			            "WHERE r.id = " . $region->getId());
+			    $entities = $q2->getResult();
 				
 			} 
         } else {
         	$entities = $em->getRepository('BinaerpilotenFreizeitbookingPlattformBundle:GokartProvider')->findAll();
         }
-        
+
         return array(
             'entities' => $entities,
         );
