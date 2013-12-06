@@ -194,7 +194,7 @@
             {% endblock %}
 
             {% block banner %}
-            <img src="{% block bannersrc %}{% endblock %}" class="img-responsive img-rounded" alt="Paintball">
+            <img src="{% block bannersrc %}{% endblock %}" class="img-responsive img-rounded" alt="{{ bannertext|default('') }}" title="{{ bannertext|default('') }}">
             {% endblock %}
 
             {% block content %}
@@ -217,9 +217,8 @@
                   <div class="footer-kategorien">
                   KATEGORIEN
                   <div class="list-group">
-                    <a href="#" class="list-group-item">Freizeit</a>
-                    <a href="#" class="list-group-item">Events</a>
-                    <a href="#" class="list-group-item">Angebote</a>
+                    <a href="{{ path('binaerpiloten_freizeitbooking_plattform_homepage',{ })}}" class="list-group-item">Freizeit</a>
+                    <a href="#" class="list-group-item">News</a>
                   </div>
                   </div>
                 </div>
@@ -227,9 +226,8 @@
                   <div class="footer-allgemein">
                   ALLGEMEIN
                     <div class="list-group">
-                    <a href="#" class="list-group-item">Impressum</a>
-                    <a href="#" class="list-group-item">Kontakt</a>
-                    <a href="#" class="list-group-item">AGB</a>
+                    <a href="{{ path('impressum',{ })}}" class="list-group-item">Impressum</a>
+                    <a href="{{ path('kontakt',{ })}}" class="list-group-item">Kontakt</a>
                   </div>
                   </div>
                 </div>

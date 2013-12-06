@@ -10,8 +10,7 @@ class WebsiteController extends Controller
 {
     public function indexAction() {
         $regions = $this->getRegions();
-        return $this->render('BinaerpilotenFreizeitbookingPlattformBundle:Website:index.html.twig',
-                array('regions' => $regions));
+        return $this->render('BinaerpilotenFreizeitbookingPlattformBundle:Website:index.html.twig', array('regions' => $regions));
     }
 
     public function gokartListAction($regionURLName) {
@@ -44,6 +43,16 @@ class WebsiteController extends Controller
 
     public function squashDetailsAction($regionURLName, $id) {
         return $this->renderGenericProviderDetails($id,'squashdetails.html.twig','SquashProvider');
+    }
+
+    public function impressumAction() {
+        $regions = $this->getRegions();
+        return $this->render('BinaerpilotenFreizeitbookingPlattformBundle:Website:impressum.html.twig', array('regions' => $regions));
+    }
+
+    public function contactAction() {
+        $regions = $this->getRegions();
+        return $this->render('BinaerpilotenFreizeitbookingPlattformBundle:Website:kontakt.html.twig', array('regions' => $regions));
     }
 
     // helper functions go here -----------------------------------------------------------------------
