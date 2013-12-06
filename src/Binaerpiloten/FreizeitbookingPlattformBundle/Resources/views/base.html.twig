@@ -193,6 +193,10 @@
               </div>
             {% endblock %}
 
+            {% block banner %}
+            <img src="{% block bannersrc %}{% endblock %}" class="img-responsive img-rounded" alt="Paintball">
+            {% endblock %}
+
             {% block content %}
             {% endblock %}
         </div>
