@@ -3,23 +3,58 @@
 {% block content %}
 
           <div class="page-header">
-              <h1>Freizeitbooking.de - Ihr Freizeitportal für .....</h1>
-              <p class="lead">Disable the responsiveness of Bootstrap by fixing the width of the container and using the first grid system tier.</p>
+              <h1>Freizeitbooking &ndash; dein Portal für angesagte Freizeitaktivit&auml;ten</h1>
+              <p class="lead">Wir vermitteln dir den direkten Kontakt zu den angesagtesten Freizeitanbietern in deiner Nähe!</p>
           </div>
 
-          <h3>What changes</h3>
-          <p>Note the lack of the <code>&lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;</code>, which disables the zooming aspect of sites in mobile devices. In addition, we reset our container's width and are basically good to go.</p>
+          <p></p>
+
+          <div class="row">
+              <div class="col-xs-3">
+                  <h3>Gokart</h3>
+                  <p><img src="{{ asset('bundles/freizeitbookingplattform/img/gokart_square.jpg') }}" class="img-responsive img-rounded" alt="" title=""></p>
+                  <div class="list-group">
+                        {% for menuregion in regions['gokart'] %}
+                            <a class="list-group-item" href="{{ path('gokartlist',{'regionURLName': menuregion.getURLName}) }}">{{ menuregion.getName }}</a>
+                        {% endfor %}
+                  </div>
+              </div>
+              <div class="col-xs-3">
+                  <h3>Lasertag</h3>
+                  <p><img src="{{ asset('bundles/freizeitbookingplattform/img/lasertag_square.jpg') }}" class="img-responsive img-rounded" alt="" title=""></p>
+                  <div class="list-group">
+                        {% for menuregion in regions['lasertag'] %}
+                            <a class="list-group-item" href="{{ path('lasertaglist',{'regionURLName': menuregion.getURLName}) }}">{{ menuregion.getName }}</a>
+                        {% endfor %}
+                  </div>
+              </div>
+              <div class="col-xs-3">
+                  <h3>Paintball</h3>
+                  <p><img src="{{ asset('bundles/freizeitbookingplattform/img/paintball_square.jpg') }}" class="img-responsive img-rounded" alt="" title=""></p>
+                  <div class="list-group">
+                        {% for menuregion in regions['paintball'] %}
+                            <a class="list-group-item" href="{{ path('paintballlist',{'regionURLName': menuregion.getURLName}) }}">{{ menuregion.getName }}</a>
+                        {% endfor %}
+                  </div>
+              </div>
+              <div class="col-xs-3">
+                  <h3>Squash</h3>
+                  <p><img src="{{ asset('bundles/freizeitbookingplattform/img/squash_square.jpg') }}" class="img-responsive img-rounded" alt="" title=""></p>
+                  <div class="list-group">
+                        {% for menuregion in regions['squash'] %}
+                            <a class="list-group-item" href="{{ path('squashlist',{'regionURLName': menuregion.getURLName}) }}">{{ menuregion.getName }}</a>
+                        {% endfor %}
+                  </div>
+              </div>
+          </div>
+
+          {# 
+          <p>As a heads up, the navbar component is rather tricky here in that the styles for displaying it are rather specific and detailed. Overrides to ensure desktop styles display are not as performant or sleek as one would like. Just be aware there may be potential gotchas as you build on top of this example when using the navbar.</p>
 
           <h3>Regarding navbars</h3>
           <p>As a heads up, the navbar component is rather tricky here in that the styles for displaying it are rather specific and detailed. Overrides to ensure desktop styles display are not as performant or sleek as one would like. Just be aware there may be potential gotchas as you build on top of this example when using the navbar.</p>
-
-          <h3>Non-responsive grid system</h3>
-          <div class="row">
-              <div class="col-xs-4">One third</div>
-              <div class="col-xs-4">One third</div>
-              <div class="col-xs-4">One third</div>
-          </div>
-
+          #}
 {% endblock %}
 
-{% block bannersrc %}{{ asset('bundles/freizeitbookingplattform/img/paintball.jpg') }}{% endblock %}
+{% block bannersrc %}{{ asset('bundles/freizeitbookingplattform/img/gokart.jpg') }}{% endblock %}
+{% set bannertext = 'Angesagter Freizeitspaß' %}
