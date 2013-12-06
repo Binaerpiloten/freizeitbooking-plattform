@@ -34,6 +34,14 @@ squashdetails:
     pattern: /squash/{regionURLName}/details/{id}
     defaults: { _controller: BinaerpilotenFreizeitbookingPlattformBundle:Website:squashDetails }
 
+impressum:
+    pattern:  /impressum
+    defaults: { _controller: BinaerpilotenFreizeitbookingPlattformBundle:Website:impressum }
+
+kontakt:
+    pattern:  /kontakt
+    defaults: { _controller: BinaerpilotenFreizeitbookingPlattformBundle:Website:contact }
+
 binaerpiloten_freizeitbooking_plattform_admin:
     resource: "@BinaerpilotenFreizeitbookingPlattformBundle/Resources/config/routing-admin.yml"
     prefix:   /admin
