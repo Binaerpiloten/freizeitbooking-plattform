@@ -35,3 +35,6 @@
       </div>
 
 {% endblock %}
+
+{% block title %}{% if seotext is not null %}{{ seotext.title }}{% endif %}{% endblock %}
+{% block metadescription %}{% if seotext is not null %}{{ seotext.metadescription }}{% endif %}{% endblock %}

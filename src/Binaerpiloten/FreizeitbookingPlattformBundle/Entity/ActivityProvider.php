@@ -1,7 +1,6 @@
 <?php
 
 namespace Binaerpiloten\FreizeitbookingPlattformBundle\Entity;
-
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
@@ -54,7 +53,7 @@ class ActivityProvider extends Entity {
     /**
      * @var float
      *
-     * @ORM\Column(name="price", type="float")
+     * @ORM\Column(name="price", type="string", length=255, nullable=true)
      */
     protected $price;
 
@@ -71,6 +70,20 @@ class ActivityProvider extends Entity {
      * @ORM\Column(name="website", type="string", length=255, nullable=true)
      */
     protected $website;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="title", type="string", length=255, nullable=true)
+     */
+    protected $title;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="metadescription", type="string", length=255, nullable=true)
+     */
+    protected $metadescription;
 
     /**
      * @var string
@@ -283,17 +296,19 @@ class ActivityProvider extends Entity {
     }
 
     public function getAbsoluteImagepath() {
-        return null === $this->imagepath ? null : $this->getUploadRootDir().'/'.$this->imagepath;
+        return null === $this->imagepath ? null
+                : $this->getUploadRootDir() . '/' . $this->imagepath;
     }
 
     public function getWebImagepath() {
-        return null === $this->path ? null : $this->getUploadDir().'/'.$this->imagepath;
+        return null === $this->path ? null
+                : $this->getUploadDir() . '/' . $this->imagepath;
     }
 
     protected function getUploadRootDir() {
         // the absolute directory path where uploaded
         // documents should be saved
-        return __DIR__.'/../../../../web/'.$this->getUploadDir();
+        return __DIR__ . '/../../../../web/' . $this->getUploadDir();
     }
 
     protected function getUploadDir() {
@@ -302,11 +317,11 @@ class ActivityProvider extends Entity {
         return 'images/activityproviders';
     }
 
-   /**
-    * Sets image.
-    *
-    * @param UploadedFile $file
-    */
+    /**
+     * Sets image.
+     *
+     * @param UploadedFile $file
+     */
     public function setImage(UploadedFile $image = null) {
         $this->image = $image;
         // check if we have an old image path
@@ -319,7 +334,6 @@ class ActivityProvider extends Entity {
         }
     }
 
-
     /**
      * Get image.
      *
@@ -329,13 +343,11 @@ class ActivityProvider extends Entity {
         return $this->image;
     }
 
-
     /**
      * @ORM\PostPersist()
      * @ORM\PostUpdate()
      */
-    public function imageUpload()
-    {
+    public function imageUpload() {
         if (null === $this->getImage()) {
             return;
         }
@@ -348,7 +360,7 @@ class ActivityProvider extends Entity {
         // check if we have an old image
         if (isset($this->temp)) {
             // delete the old image
-            unlink($this->getUploadRootDir().'/'.$this->temp);
+            unlink($this->getUploadRootDir() . '/' . $this->temp);
             // clear the temp image path
             $this->temp = null;
         }
@@ -359,22 +371,38 @@ class ActivityProvider extends Entity {
      * @ORM\PrePersist()
      * @ORM\PreUpdate()
      */
-    public function preImageUpload()
-    {
+    public function preImageUpload() {
         if (null !== $this->getImage()) {
             // do whatever you want to generate a unique name
             $filename = sha1(uniqid(mt_rand(), true));
-            $this->imagepath = $filename.'.'.$this->getImage()->guessExtension();
+            $this->imagepath = $filename . '.'
+                    . $this->getImage()->guessExtension();
         }
     }
 
     /**
      * @ORM\PostRemove()
      */
-    public function removeImageUpload()
-    {
+    public function removeImageUpload() {
         if ($file = $this->getAbsoluteImagePath()) {
             unlink($file);
         }
     }
+
+    public function getTitle() {
+        return $this->title;
+    }
+
+    public function setTitle($title) {
+        $this->title = $title;
+    }
+
+    public function getMetadescription() {
+        return $this->metadescription;
+    }
+
+    public function setMetadescription($metadescription) {
+        $this->metadescription = $metadescription;
+    }
+
 }

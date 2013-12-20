@@ -23,6 +23,8 @@ class PaintballProviderType extends AbstractType
             ->add('price', null, array('attr' => array('class' => 'form-control')))
             ->add('telephone', null, array('attr' => array('class' => 'form-control')))
             ->add('website', null, array('attr' => array('class' => 'form-control')))
+            ->add('title', null, array('attr' => array('class' => 'form-control')))
+            ->add('metadescription', null, array('attr' => array('class' => 'form-control')))
             ->add('image', null, array('attr' => array('class' => 'form-control')))
             ->add('indoorFieldCount', null, array('attr' => array('class' => 'form-control')))
             ->add('outdoorFieldCount', null, array('attr' => array('class' => 'form-control')))

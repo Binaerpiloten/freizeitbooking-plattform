@@ -9,7 +9,7 @@
     <!-- Eintrag Detailseite -->
     <div class="row">
         <div class="col-md-12">
-            <p>Preis: {{ provider.price }} €<br>Max. Spielerzahl: {{ provider.maxPlayer}}</p>
+            <p>Preis: {{ provider.price }} <br>Max. Spielerzahl: {{ provider.maxPlayer}}</p>
         </div>
         <div class="col-md-6">
             <p>{{ provider.street }}<br>{{ provider.zip }} {{ provider.city }}</p>
@@ -20,7 +20,7 @@
             <a class="btn btn-large btn-success" href="tel:{{ provider.telephone }}">{{ provider.telephone }}</a>
         </div>
         <div class="col-md-12">
-            <a class="btn btn-large btn-success">Zur Kontaktseite des Anbieters</a>
+            <a class="btn btn-large btn-success" href="{{ provider.website }}">Zur Kontaktseite des Anbieters</a>
         </div>
     </div>
 {% endblock %}
@@ -28,3 +28,6 @@
 {% block adminbutton %}
     <a href="{{ path('lasertagprovider_edit',{'id': provider.id }) }}">Eintrag bearbeiten</a>
 {% endblock %}
+
+{% block title %}{{ provider.title }}{% endblock %}
+{% block metadescription %}{{ provider.metadescription }}{% endblock %}

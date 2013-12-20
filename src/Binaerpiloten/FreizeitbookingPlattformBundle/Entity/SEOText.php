@@ -28,6 +28,20 @@ class SEOText extends Entity {
     protected $text;
 
     /**
+     * @var string
+     *
+     * @ORM\Column(name="title", type="string", length=255)
+     */
+    protected $title;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="metadescription", type="string", length=255)
+     */
+    protected $metadescription;
+
+    /**
      * @ORM\ManyToOne(targetEntity="Region", inversedBy="seotexts")
      */
     protected $region;
@@ -76,4 +90,21 @@ class SEOText extends Entity {
         $this->category = $category;
         $category->getSEOTexts()->add($this);
     }
+
+    public function getTitle() {
+        return $this->title;
+    }
+
+    public function setTitle($title) {
+        $this->title = $title;
+    }
+
+    public function getMetadescription() {
+        return $this->metadescription;
+    }
+
+    public function setMetadescription($metadescription) {
+        $this->metadescription = $metadescription;
+    }
+
 }

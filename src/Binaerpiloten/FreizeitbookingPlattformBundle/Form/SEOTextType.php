@@ -17,6 +17,8 @@ class SEOTextType extends AbstractType
         $builder
             ->add('heading', null, array('attr' => array('class' => 'form-control')))
             ->add('text', null, array('attr' => array('class' => 'form-control')))
+            ->add('title', null, array('attr' => array('class' => 'form-control')))
+            ->add('metadescription', null, array('attr' => array('class' => 'form-control')))
             ->add('region', null, array('attr' => array('class' => 'form-control')))
             ->add('category', null, array('attr' => array('class' => 'form-control')))
         ;
