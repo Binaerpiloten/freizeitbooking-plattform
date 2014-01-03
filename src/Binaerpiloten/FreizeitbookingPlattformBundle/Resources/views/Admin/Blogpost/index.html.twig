@@ -1,0 +1,39 @@
+{% extends 'BinaerpilotenFreizeitbookingPlattformBundle:Admin:backend-base.html.twig' %}
+
+{% block body -%}
+    <h1>Blogpost list</h1>
+
+    <table class="records_list  table table-striped table-hover">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Heading</th>
+                <th>Text</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for entity in entities %}
+            <tr>
+                <td><a href="{{ path('blogpost_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
+                <td>{{ entity.heading }}</td>
+                <td>{{ entity.text }}</td>
+                <td>
+                <ul>
+                    <li>
+                        <a href="{{ path('blogpost_show', { 'id': entity.id }) }}">show</a>
+                    </li>
+                    <li>
+                        <a href="{{ path('blogpost_edit', { 'id': entity.id }) }}">edit</a>
+                    </li>
+                </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+            <a href="{{ path('blogpost_new') }}" class='btn btn-primary' type='button'>
+                Create a new entry
+            </a>
+    {% endblock %}

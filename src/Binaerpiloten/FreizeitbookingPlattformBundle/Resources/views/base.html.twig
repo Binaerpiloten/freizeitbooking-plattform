@@ -121,6 +121,14 @@
                                 <li><a href="{{ path('category_new',{ }) }}"><span class="glyphicon glyphicon-plus"></span> Neu</a></li>
                             </ul>
                         </li>
+                        <li class="dropdown{{ 'blogpost' in app.request.get('_route') ? ' active' }}">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Blogpost <b class="caret"></b></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="{{ path('blogpost',{ }) }}"><span class="glyphicon glyphicon-list"></span> Liste anzeigen</a></li>
+                                <li class="divider"></li>
+                                <li><a href="{{ path('blogpost_new',{ }) }}"><span class="glyphicon glyphicon-plus"></span> Neu</a></li>
+                            </ul>
+                        </li>
                     </ul>
                     <ul class="nav navbar-nav navbar-right">
                             <li>

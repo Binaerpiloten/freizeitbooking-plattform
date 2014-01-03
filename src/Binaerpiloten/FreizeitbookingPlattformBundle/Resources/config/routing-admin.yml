@@ -29,3 +29,7 @@ category:
 seotext:
     resource: "@BinaerpilotenFreizeitbookingPlattformBundle/Controller/SEOTextController.php"
     type: annotation
+
+blogpost:
+    resource: "@BinaerpilotenFreizeitbookingPlattformBundle/Controller/BlogpostController.php"
+    type: annotation
