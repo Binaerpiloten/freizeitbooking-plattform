@@ -12,17 +12,14 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class GokartProvider extends ActivityProvider {
     /**
-     * @var integer
+     * @var string
      *
-     * @ORM\Column(name="length", type="integer")
+     * @ORM\Column(name="length", type="string", nullable=true)
      */
     private $length;
 
     /**
      * Set length
-     *
-     * @param integer $length
-     * @return GokartProvider
      */
     public function setLength($length) {
         $this->length = $length;
@@ -31,8 +28,6 @@ class GokartProvider extends ActivityProvider {
 
     /**
      * Get length
-     *
-     * @return integer 
      */
     public function getLength() {
         return $this->length;

@@ -9,7 +9,7 @@
     <!-- Eintrag Detailseite -->
     <div class="row">
         <div class="col-md-12">
-            <p>Preis: {{ provider.price }} <br>Streckenlänge: {{ provider.length | number_format(0,'','.')}}&thinsp;m</p>
+            <p>Preis: {{ provider.price }} <br>Streckenlänge: {{ provider.length }}</p>
         </div>
         <div class="col-md-6">
             <p>{{ provider.street }}<br>{{ provider.zip }} {{ provider.city }}</p>
@@ -20,7 +20,7 @@
             <a class="btn btn-large btn-success" href="tel:{{ provider.telephone }}">{{ provider.telephone }}</a>
         </div>
         <div class="col-md-12">
-            <a class="btn btn-large btn-success" href="{{ provider.website }}">Zur Kontaktseite des Anbieters</a>
+            <a class="btn btn-large btn-success" href="{{ provider.website }}" target="_blank">Zur Kontaktseite des Anbieters</a>
         </div>
     </div>
 {% endblock %}
