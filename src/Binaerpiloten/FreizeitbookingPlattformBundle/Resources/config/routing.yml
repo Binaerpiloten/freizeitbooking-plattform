@@ -42,6 +42,10 @@ kontakt:
     pattern:  /kontakt
     defaults: { _controller: BinaerpilotenFreizeitbookingPlattformBundle:Website:contact }
 
+fullblogpost:
+    pattern: /blog/{urlName}
+    defaults: { _controller: BinaerpilotenFreizeitbookingPlattformBundle:Website:showBlogpost }
+
 binaerpiloten_freizeitbooking_plattform_admin:
     resource: "@BinaerpilotenFreizeitbookingPlattformBundle/Resources/config/routing-admin.yml"
     prefix:   /admin

@@ -16,10 +16,15 @@ class BlogpostType extends AbstractType
     {
         $builder
             ->add('heading', null, array('attr' => array('class' => 'form-control')))
+            ->add('teaser', null, array('attr' => array('class' => 'form-control')))
             ->add('text', null, array('attr' => array('class' => 'form-control')))
+            ->add('title', null, array('attr' => array('class' => 'form-control')))
+            ->add('metadescription', null, array('attr' => array('class' => 'form-control')))
+            ->add('urlname', null, array('attr' => array('class' => 'form-control')))
+            ->add('linkcaption', null, array('attr' => array('class' => 'form-control')))
         ;
     }
-    
+
     /**
      * @param OptionsResolverInterface $resolver
      */

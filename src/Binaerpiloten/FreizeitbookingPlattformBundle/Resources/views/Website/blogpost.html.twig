@@ -1,0 +1,11 @@
+{% extends 'BinaerpilotenFreizeitbookingPlattformBundle:Website:website-base.html.twig' %}
+
+{% block banner %}{% endblock %}
+
+{% block content %}
+    <h1>{{ blogpost.heading }}</h1>
+    {% autoescape false %}{{ blogpost.text }}{% endautoescape %}
+{% endblock %}
+
+{% block title %}{% if blogpost is not null %}{{ blogpost.title }}{% endif %}{% endblock %}
+{% block metadescription %}{% if blogpost is not null %}{{ blogpost.metadescription }}{% endif %}{% endblock %}

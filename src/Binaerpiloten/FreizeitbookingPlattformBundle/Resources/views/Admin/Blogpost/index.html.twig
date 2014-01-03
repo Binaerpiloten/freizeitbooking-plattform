@@ -8,6 +8,7 @@
             <tr>
                 <th>Id</th>
                 <th>Heading</th>
+                <th>Teaser</th>
                 <th>Text</th>
                 <th>Actions</th>
             </tr>
@@ -17,6 +18,7 @@
             <tr>
                 <td><a href="{{ path('blogpost_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
                 <td>{{ entity.heading }}</td>
+                <td>{{ entity.teaser }}</td>
                 <td>{{ entity.text }}</td>
                 <td>
                 <ul>

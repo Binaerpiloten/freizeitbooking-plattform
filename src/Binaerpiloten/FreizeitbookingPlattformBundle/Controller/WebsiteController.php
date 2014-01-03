@@ -9,8 +9,11 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 class WebsiteController extends Controller
 {
     public function indexAction() {
+        $em = $this->getDoctrine()->getManager();
+        $blogposts = $em->getRepository('Binaerpiloten\FreizeitbookingPlattformBundle\Entity\Blogpost')->findAll();
+
         $regions = $this->getRegions();
-        return $this->render('BinaerpilotenFreizeitbookingPlattformBundle:Website:index.html.twig', array('regions' => $regions));
+        return $this->render('BinaerpilotenFreizeitbookingPlattformBundle:Website:index.html.twig', array('regions' => $regions, 'blogposts' => $blogposts));
     }
 
     public function gokartListAction($regionURLName) {
@@ -53,6 +56,15 @@ class WebsiteController extends Controller
     public function contactAction() {
         $regions = $this->getRegions();
         return $this->render('BinaerpilotenFreizeitbookingPlattformBundle:Website:kontakt.html.twig', array('regions' => $regions));
+    }
+
+    public function showBlogpostAction($urlName) {
+        $em = $this->getDoctrine()->getManager();
+        $blogpost = $em->getRepository('Binaerpiloten\FreizeitbookingPlattformBundle\Entity\Blogpost')
+                       ->findOneBy(array('urlName' => $urlName));
+
+        $regions = $this->getRegions();
+        return $this->render('BinaerpilotenFreizeitbookingPlattformBundle:Website:blogpost.html.twig', array('regions' => $regions, 'blogpost' => $blogpost));
     }
 
     // helper functions go here -----------------------------------------------------------------------
